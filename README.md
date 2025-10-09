@@ -1,10 +1,10 @@
-Project Description
+# Project Description
 
 Rental Hunters is a Python-based function library created to analyze Rental Hunters is a student-focused housing analysis system that helps University of Maryland students find the best rental options near campus.
 The system evaluates properties based on price fairness, commute convenience, safety, lease flexibility, and access to nearby amenities — producing an overall “Best Value Score” for each rental.
 
 
-Team Members:
+# Team Members:
     Serra Tak 
     Nicholas Stroble
     Bryan Sturgis
@@ -19,15 +19,15 @@ Solution: This library provides Python functions that calculate rental scores us
 
 Installation & Setup
 
-# I dont know yet 
+- I dont know yet 
 
 Usage examples for key functions
 
-# i don't know yet
+- i don't know yet
 
 Function library overview and organization
 
-# i don't know yet
+- i don't know yet
 
 Contribution guidelines for team members
-# i don't know yet
+- i don't know yet
