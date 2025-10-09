@@ -10,24 +10,25 @@ The system evaluates properties based on price fairness, commute convenience, sa
     Bryan Sturgis
 
 
-Domain Focus and Problem Statement
+# Domain Focus and Problem Statement
+
 Domain: Off-Campus Student Housing Analysis
 
 Problem: UMD students often struggle to find rentals that balance affordability, safety, and convenience.
 
 Solution: This library provides Python functions that calculate rental scores using price comparisons, commute times, nearby amenities, and safety metrics. These will later be integrated into a complete scoring system and user interface.
 
-Installation & Setup
+# Installation & Setup
 
 - I dont know yet 
 
-Usage examples for key functions
+# Usage examples for key functions
 
 - i don't know yet
 
-Function library overview and organization
+# Function library overview and organization
 
 - i don't know yet
 
-Contribution guidelines for team members
+# Contribution guidelines for team members
 - i don't know yet
