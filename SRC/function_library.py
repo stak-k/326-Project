@@ -20,9 +20,9 @@ def validate_rental_address(address):
             Traceback (most recent call last):
     """
    # Simple validation: check if address is a non-empty string
-   
+
     if not isinstance(address, str) or not address.strip():
-        raise ValueError("Address must be a non-empty string.")
+        raise ValueError("Address must be a non-empty.")
     return True
 
 
