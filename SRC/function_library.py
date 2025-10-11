@@ -99,7 +99,7 @@ def validate_zipcode(zipcode: str) -> bool:
     
     return True
 
-
+# Format the address entered by user for consistency (title case, remove extra spaces)
 def format_address(address: str) -> str:
      """
      Format an address string for consistency (title case, remove extra spaces).
@@ -140,7 +140,56 @@ def format_address(address: str) -> str:
 
 
 #medium
+# Calculate a price score (1-10) based on the rental price compared to the average rent.
+def calculate_price_score(price: float, average_price: float) -> float:
+     """
+     Calculate a price score (1-10) based on the rental price compared to the average rent.
+     
+     Higher scores = better value (lower price compared to average).
 
+     Args:
+            price (float): The monthly rent entered by the user.
+            average_price (float): The average rental price for similar properties in College Park.
+     
+     Returns:
+            float: A score between 0 and 10, where higher scores indicate better value.
+     
+     Raises:
+            TypeError: If either price or average_price is not a float or int.
+            ValueError: If either price or average_price is negative or zero.
+     
+     Examples:   
+                 >>> calculate_price_score(1200, 1500)
+                 8.0
+                 >>> calculate_price_score(4500, 1500)
+                 0.0
+                 >>> calculate_price_score(-500, 1500)
+                 ValueError: Price and average price must be positive numbers.
+                 >>> calculate_price_score(1200, "1500")
+                 TypeError: Price and average price must be numbers.
+     """
+     #Type check
+     if not isinstance(price, (int, float)) or not isinstance(average_price, (int, float)):
+          raise TypeError("Price and average price must be numbers.")
+     
+     # Negative check
+     if price <= 0 or average_price <= 0:
+          raise ValueError("Price and average price must be positive numbers.")
+     
+     # Scoring Logic
+     ratio = price / average_price
+
+     if ratio <= 0.5: # 50% or less of average price
+          score = 10.0
+     elif ratio >= 3.0: # 300% above average price
+          score = 0.0
+     else:
+          score = round(10 * (1.5 - ratio), 2) # Linear scale for score between 0.5x and 3x the average price
+
+
+     return score
+     
+    
 
 
 #Complex
