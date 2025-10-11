@@ -100,6 +100,45 @@ def validate_zipcode(zipcode: str) -> bool:
     return True
 
 
+def format_address(address: str) -> str:
+     """
+     Format an address string for consistency (title case, remove extra spaces).
+
+     Args:
+           address (str): The rental address to format. 
+     
+     Returns:
+           str: A formatted address string with proper capitalization and spacing.
+     
+     Raises:
+           TypeError: If the address is not a string.
+           ValueError: If the address is an empty string.
+     
+     Examples:   
+               >>> format_address("123 main st, college park ")
+               '123 Main St, College Park'
+               >>> format_address("  ")
+               ValueError: Address cannot be empty.
+               >>> format_address(12345)
+               TypeError: Address must be a string.
+     """
+
+     # Validate correct data type
+     if not isinstance(address, str):
+         raise TypeError("Address must be a string.")
+     
+     # Basic formatting: title case and strip extra spaces
+     clean_address = ' '.join(address.title().split())
+
+     # Ensure the address is not empty after formatting
+     if not clean_address:
+          raise ValueError("Address cannot be empty.")
+     
+     
+     
+     return clean_address
+
+
 #medium
 
 
