@@ -73,6 +73,32 @@ def validate_rent_input(price):
     
     return True
 
+# Ensure the Zipcode is valid and properly formated
+def validate_zipcode(zipcode: str) -> bool:
+    """Validate the zipcode format.
+    Args:
+         zipcode (str): The zipcode to validate. 
+
+    Returns:
+         bool: True if the zipcode is valid, Otherwise raises ValueError.
+
+     Raises:
+          ValueError: If the ZIP code is not exactly 5 digits or contains non-numeric characters
+
+     Example:
+          >>> validate_zip_code("20740")
+          True
+          >>> validate_zip_code("abcde")
+          ValueError: Zipcode must be 5 digits.
+          
+     
+    """
+    # Length and digit check
+    if len(zipcode) != 5 or not zipcode.isdigit():
+        raise ValueError("Zipcode must be 5 digits.")
+    
+    return True
+
 
 #medium
 
