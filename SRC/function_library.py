@@ -138,6 +138,44 @@ def format_address(address: str) -> str:
      
      return clean_address
 
+def calculate_flexibilty_score(lease_term: str) -> int:
+     """
+     Calculate a flexibility score based on the lease term of rental property.
+
+     Args:
+           lease_term (str): The lease term option chosen by the user. 
+                              Options: "Month-to-Month", "6 Months", "12 Months"
+     
+     Returns:
+           int: A score between 4 and 10, where higher scores indicate more flexibility.
+     
+     Raises:
+           ValueError: If no option is selected or if the option is invalid.
+     
+     Examples:   
+               >>> calculate_flexibilty_score("Month-to-Month")
+               10
+               >>> calculate_flexibilty_score("6 Months")
+               7
+               >>> calculate_flexibilty_score("12 Months")
+               4
+               >>> calculate_flexibilty_score("")
+               ValueError: No lease term was selected. Choose from 'Month-to-Month', '6 Months', or '12 Months'.
+     """
+     # Predefined flexibility options and their corresponding scores
+     flexibility_options = {
+          "Month-to-Month": 10,
+          "6 Months": 7,
+          "12 Months": 4,
+     }
+
+     # Validate input
+     if not lease_term:
+          raise ValueError("No lease term was selected. Choose from 'Month-to-Month', '6 Months', or '12 Months'.")
+
+     return flexibility_options[lease_term]
+
+
 
 #medium
 # Calculate a price score (1-10) based on the rental price compared to the average rent.
