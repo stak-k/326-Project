@@ -12,3 +12,11 @@ validate_rental_address("123 Main St, Springfield, IL 62704")
 validate_rental_address("")
 Output: True
 Error Example: Address cannot be empty
+
+### `validate_rent_input(price)`
+```python
+validate_rent_input(1500)
+validate_rent_input(-1500)
+validate_rent_input("1500")
+validate_rent_input: True
+Error: Rent price cannot be negative or equal to zero.
