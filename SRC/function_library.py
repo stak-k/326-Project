@@ -3,6 +3,7 @@
 
 # Installed for getting coordiantes for rental property entered
 from geopy.geocoders import Nominatim
+from geopy.exc import GeocoderServiceError, GeocoderTimedOut
 
 #simple
 
@@ -456,4 +457,53 @@ def calculate_commute_score(distances: dict) -> float:
 
 # Saves rental and score info into CSV or database (integration + error handling).
 # def update_rental_database(new_property_data)
+
+def get_property_coordinates(address: str) -> tuple:
+     """
+     Get the latitude and longitude coordinates for a given address using geopy.
+     Uses the Nominatim geocoding service to convert a formatted address into geographic coordinates.
+
+     Args:
+          address (str): The rental address to geocode.
+
+     Returns:
+          tuple[float, float]: A tuple containing (latitude, longitude).
+
+
+     Raises:
+          TypeError: If the address is not a string.
+          ValueError: If the address is empty or could not be geocoded.
+          GeocoderServiceError: If the geocoding service encounters an error.
+
+     Examples:
+          >>> get_property_coordinates("123 Main St, College Park, MD")
+          (38.9807, -76.9369)
+          >>> get_property_coordinates("")
+          ValueError: Address cannot be empty.
+          >>> get_property_coordinates(12345)
+          TypeError: Address must be a string.
+     """
+
+     # Validate input
+     if not isinstance(address, str):
+          raise TypeError("Address must be a string.")
+     
+     # Clean up address using exsisting function
+     clean_address = format_address(address)
+
+     if not clean_address:
+          raise ValueError("Address cannot be empty.")
+     
+     # Initialize Nominatim geocoder
+     geolocator = Nominatim(user_agent="rental_hunters")
+
+     try:
+          location = geolocator.geocode(clean_address, timeout = 10)
+     except (GeocoderServiceError, GeocoderTimedOut) as e:
+          raise ConnectionError(f"Geocoding service error: {e}")
+     
+     if location is None:
+          raise ValueError("Could not provide coordinates for the provided address.")
+     
+     return (location.latitude, location.longitude)
 
