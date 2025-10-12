@@ -235,7 +235,47 @@ def calculate_price_score(price: float, average_price: float) -> float:
 # def calculate_safety_score(crime_rate: float, avg_crime_rate: float)
 
 # Converts miles → estimated minutes based on travel mode (“walk”, “bike”, “drive”, “bus”).
-# def calculate_commute_time(distance: float, mode: str)
+def calculate_commute_time(distance: float, mode: str) -> float:
+     """
+     Estimate commute time in minutes based on distance and travel mode.
+     
+     Args:
+          distance (float): Distance in miles.
+          mode (str): Mode of transportation. Options: "walk", "bike", "drive", "bus".
+
+     Returns:
+          float: Estimated commute time in minutes.
+
+     Raises:
+          ValueError: If distance is negative or if no mode is selected.
+
+
+     Examples:
+          >>> calculate_commute_time(1.2, 'walk')
+          24.0
+          >>> calculate_commute_time(3, 'drive')
+          7.2
+     """
+
+     if distance < 0:
+          raise ValueError("Distance cannot be negative.")
+
+     
+     speeds = {
+     'walk': 3,    # Average walking speed in mph}
+     'bike': 10,   # Average biking speed in mph
+     'drive': 25,  # Average driving speed in College Park
+     'bus': 15     # Average bus speed in mph in College Park
+     }
+     
+     mode = mode.lower()
+     if mode not in speeds:
+          raise ValueError(f"Mode of transportation must be selected (walk, bike, drive, or bus).")
+     
+     time_minutes = round((distance / speeds[mode]) * 60, 2)
+     
+     return time_minutes
+   
 
 
 
