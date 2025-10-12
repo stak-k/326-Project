@@ -56,7 +56,7 @@ except Exception as e:
 
 try:
     print("calculate_commute_time:", calculate_commute_time(3, 'drive')) 
-    rint("calculate_commute_time:", calculate_commute_time(5, 'bike'))
+    print("calculate_commute_time:", calculate_commute_time(5, 'bike'))
     print("calculate_commute_time:", calculate_commute_time(-2, 'walk'))
     print("calculate_commute_time:", calculate_commute_time('abc', 'drive'))
     print("calculate_commute_time:", calculate_commute_time(3, 'fly'))
@@ -67,7 +67,7 @@ try:
     print("calculate_flexibilty_score:", calculate_flexibilty_score("high"))
     print("calculate_flexibilty_score:", calculate_flexibilty_score("12 Months"))
     print("calculate_flexibilty_score:", calculate_flexibilty_score("Month-to-Month"))
-    print("calculate_flexibilty_score:", calculate_flexibilty_score("6Month"))
+    print("calculate_flexibilty_score:", calculate_flexibilty_score("6 Month"))
     print("calculate_flexibilty_score:", calculate_flexibilty_score(""))
 except Exception as e:
     print("Error:", e)
