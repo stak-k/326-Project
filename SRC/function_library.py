@@ -340,7 +340,7 @@ def calculate_flexibilty_score(lease_term: str) -> int:
 #Complex
 
 # Validate that the user has selected at least one class location from the defined options (up to a maximum of 5)
-def validate_class_locations(selected, max_select: int = 5) -> list[str]:
+def validate_class_locations(selected: list[str], max_select: int = 5) -> list[str]:
      """
      Validate that the user has selected at least one class location
      from the defined options (up to a maximum of 5)
@@ -356,20 +356,20 @@ def validate_class_locations(selected, max_select: int = 5) -> list[str]:
           ValueError: If no locations are selected or more than `max_select` are chosen.
 
      Examples:
-          >>> validate_class_locations(["CP", "UMD"])
-          ['CP', 'UMD']
-          >>> validate_class_locations([])
-          ValueError: At least one class location must be selected.
-          >>> validate_class_locations(["CP", "UMD", "PGC", "DC", "VA", "NY"])
-          ValueError: No more than 5 class locations can be selected.
+         >>> validate_class_locations(["ESJ", "HBK", "KEY"])
+        ['Esj', 'Hbk', 'Key']
+        >>> validate_class_locations([])
+        ValueError: At least one class location must be selected.
+        >>> validate_class_locations(["ESJ", "HBK", "KEY", "MMH", "CCC", "TWS"])
+        ValueError: No more than 5 class locations can be selected
      
      """
+     building_options = ["ESJ", "HBK", "KEY", "MMH", "CCC", "TWS"]
      # Check if selected is none
-     if selected is None:
-          raise ValueError("At least one class location must be selected.")
      # Check if list is empty
-     if not selected:
+     if selected is None or not selected:
           raise ValueError("At least one class location must be selected.")
+     
      # Ensure no more than max_select locations are chosen
      if len(selected) > max_select:
           raise ValueError(f"No more than {max_select} class locations can be selected.")
@@ -379,8 +379,12 @@ def validate_class_locations(selected, max_select: int = 5) -> list[str]:
           raise TypeError("All class locations must be strings.")
      
      # Clean and return the list of selected locations
-     cleaned_locations = [loc.strip().title() for loc in selected if loc.strip()]
-
+     cleaned_locations = []
+     for loc in selected:
+          loc = loc.strip().upper()
+          if loc not in building_options:
+               raise ValueError(f"Invalid class location selected: {loc}. Choose from {', '.join(building_options)}.")
+          cleaned_locations.append(loc.title())
      # Return the cleaned list of locations
      return cleaned_locations
 
