@@ -134,13 +134,69 @@ def format_address(address: str) -> str:
      if not clean_address:
           raise ValueError("Address cannot be empty.")
      
-     
-     
      return clean_address
 
 
 # Converts numeric rent into formatted string like "$1,250 / month".
-# def format_rent_display():
+def format_rent_display(price: float) -> str:
+     """
+     Convert numeric rent into formatted string like "$1,250 / month".
+
+     Args:
+          price (float): The monthly rent entered by the user.
+     
+     Returns:
+          str: Formatted rent string.
+     
+     Raises:
+          TypeError: If price is not a float or int.
+          ValueError: If price is negative or zero.
+     
+     Examples:   
+               >>> format_rent_display(1250)
+               '$1,250 / month'
+               >>> format_rent_display(-500)
+               ValueError: Rent price must be a positive number.
+               >>> format_rent_display("1000")
+               TypeError: Rent price must be a number.
+     """
+     #Type check
+     if not isinstance(price, (int, float)):
+          raise TypeError("Rent price must be a number.")
+     
+     # Negative check
+     if price <= 0:
+          raise ValueError("Rent price must be a positive number.")
+     
+     formatted_price = "${price:,.0f} / month"
+     return formatted_price
+
+# Utilities check
+def check_utilities_included(is_included: bool) -> bool:
+     """Return the toggle state for utilities inclusion.
+
+     Args:
+          is_included (bool): True if toggle is on (utilities included), 
+                              False if off.
+     
+     Returns:
+          bool: True if utilities are included, False otherwise.
+     
+     Raises:
+          TypeError: If input is not boolean.
+     
+     Examples:   
+               >>> check_utilities_included("True")
+               True
+               >>> check_utilities_included("False")
+               False
+     """
+
+     if not isinstance(is_included, bool):
+        raise TypeError("Input must be a boolean value (True or False).")
+     
+     return is_included
+
 
 
 #medium
