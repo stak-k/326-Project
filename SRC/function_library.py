@@ -168,7 +168,7 @@ def format_rent_display(price: float) -> str:
      if price <= 0:
           raise ValueError("Rent price must be a positive number.")
      
-     formatted_price = "${price:,.0f} / month"
+     formatted_price = f"${price:,.0f} / month"
      return formatted_price
 
 # Utilities check
