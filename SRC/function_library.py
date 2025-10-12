@@ -138,43 +138,6 @@ def format_address(address: str) -> str:
      
      return clean_address
 
-# Calculate a flexibility score based on the lease term of rental property.
-def calculate_flexibilty_score(lease_term: str) -> int:
-     """
-     Calculate a flexibility score based on the lease term of rental property.
-
-     Args:
-           lease_term (str): The lease term option chosen by the user. 
-                              Options: "Month-to-Month", "6 Months", "12 Months"
-     
-     Returns:
-           int: A score between 4 and 10, where higher scores indicate more flexibility.
-     
-     Raises:
-           ValueError: If no option is selected or if the option is invalid.
-     
-     Examples:   
-               >>> calculate_flexibilty_score("Month-to-Month")
-               10
-               >>> calculate_flexibilty_score("6 Months")
-               7
-               >>> calculate_flexibilty_score("12 Months")
-               4
-               >>> calculate_flexibilty_score("")
-               ValueError: No lease term was selected. Choose from 'Month-to-Month', '6 Months', or '12 Months'.
-     """
-     # Predefined flexibility options and their corresponding scores
-     flexibility_options = {
-          "Month-to-Month": 10,
-          "6 Months": 7,
-          "12 Months": 4,
-     }
-
-     # Validate input
-     if not lease_term:
-          raise ValueError("No lease term was selected. Choose from 'Month-to-Month', '6 Months', or '12 Months'.")
-
-     return flexibility_options[lease_term]
 
 # Converts numeric rent into formatted string like "$1,250 / month".
 # def format_rent_display():
@@ -277,8 +240,46 @@ def calculate_commute_time(distance: float, mode: str) -> float:
      return time_minutes
    
 
+# Calculate a flexibility score based on the lease term of rental property.
+def calculate_flexibilty_score(lease_term: str) -> int:
+     """
+     Calculate a flexibility score based on the lease term of rental property.
 
+     Args:
+           lease_term (str): The lease term option chosen by the user. 
+                              Options: "Month-to-Month", "6 Months", "12 Months"
+     
+     Returns:
+           int: A score between 4 and 10, where higher scores indicate more flexibility.
+     
+     Raises:
+           ValueError: If no option is selected or if the option is invalid.
+     
+     Examples:   
+               >>> calculate_flexibilty_score("Month-to-Month")
+               10
+               >>> calculate_flexibilty_score("6 Months")
+               7
+               >>> calculate_flexibilty_score("12 Months")
+               4
+               >>> calculate_flexibilty_score("")
+               ValueError: No lease term was selected. Choose from 'Month-to-Month', '6 Months', or '12 Months'.
+     """
+     # Predefined flexibility options and their corresponding scores
+     flexibility_options = {
+          "Month-to-Month": 10,
+          "6 Months": 7,
+          "12 Months": 4,
+     }
 
+     # Validate input
+     if not lease_term:
+          raise ValueError("No lease term was selected. Choose from 'Month-to-Month', '6 Months', or '12 Months'.")
+
+     return flexibility_options[lease_term]
+
+# Get the score for convenience based on proximity to amenities.
+# def calculate_convenience_score()
 
 #Complex
 
@@ -330,7 +331,61 @@ def validate_class_locations(selected, max_select: int = 5) -> list[str]:
 
 
 # Uses walking, driving, biking, and bus distance averages to compute an overall commute score.
-# def calculate_commute_score()
+def calculate_commute_score(distances: dict) -> float:
+     """
+     Calculate an overall commute score (0-10) based on average distances for each mode of transportation.
+
+     Args:
+          distances (dict): A dictionary containing avg distance (in miles) for each mode.
+                            Example: {'walk': 0.8, 'bike': 1.5, 'drive': 3.2, 'bus': 2.7}
+
+     Returns:
+          float: Commute score between 0 and 10 (higher = better proximity).
+
+     Raises:
+          ValueError: If no valid modes are provided or distances are negative.
+          
+
+     Examples:
+          >>> calculate_commute_score({'walk': 0.8, 'drive': 3.0})
+          8.5
+     """
+     if not isinstance(distances, dict):
+          raise TypeError("Distances must be provided as a dictionary.")
+     
+     if not distances:
+          raise ValueError("Distances dictionary cannot be empty.")
+     
+     valid_modes = {'walk', 'bike', 'drive', 'bus'}
+     total_score = 0
+     count = 0
+
+     for mode, dist in distances.items():
+          if mode not in valid_modes:
+               continue # Skip any modes not valid
+          if dist < 0:
+               raise ValueError(f"Distance for mode '{mode}' cannot be negative.")
+          
+          # Get commute time using our previously defined function
+          time = calculate_commute_time(dist, mode)
+
+          # Convert commute time → score (shorter = higher)
+          # <10 min = 10 points, 10–30 min = scaled, >60 = 0
+          if time <= 10:
+               score = 10
+          elif time >= 60:
+               score = 0
+          else:
+               score = round(10 * (1 - (time - 10) / 50), 2)
+
+          total_score += score
+          count += 1
+
+     if count == 0:
+          raise ValueError("No valid transportation modes provided.")
+
+     # Average the scores across all modes
+     return round(total_score / count, 2)
 
 
 # Combines weighted values of price, safety, commute, and flexibility into a single total score.
