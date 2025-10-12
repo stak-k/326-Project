@@ -176,9 +176,12 @@ def calculate_flexibilty_score(lease_term: str) -> int:
 
      return flexibility_options[lease_term]
 
+# Converts numeric rent into formatted string like "$1,250 / month".
+# def format_rent_display():
 
 
 #medium
+
 # Calculate a price score (1-10) based on the rental price compared to the average rent.
 def calculate_price_score(price: float, average_price: float) -> float:
      """
@@ -228,10 +231,18 @@ def calculate_price_score(price: float, average_price: float) -> float:
 
      return score
      
-    
+# Produces a normalized score (higher = safer).  
+# def calculate_safety_score(crime_rate: float, avg_crime_rate: float)
+
+# Converts miles → estimated minutes based on travel mode (“walk”, “bike”, “drive”, “bus”).
+# def calculate_commute_time(distance: float, mode: str)
+
+
 
 
 #Complex
+
+# Validate that the user has selected at least one class location from the defined options (up to a maximum of 5)
 def validate_class_locations(selected, max_select: int = 5) -> list[str]:
      """
      Validate that the user has selected at least one class location
@@ -275,3 +286,17 @@ def validate_class_locations(selected, max_select: int = 5) -> list[str]:
 
      # Return the cleaned list of locations
      return cleaned_locations
+
+
+
+# Uses walking, driving, biking, and bus distance averages to compute an overall commute score.
+# def calculate_commute_score()
+
+
+# Combines weighted values of price, safety, commute, and flexibility into a single total score.
+# def calculate_overall_rental_score()
+
+
+# Saves rental and score info into CSV or database (integration + error handling).
+# def update_rental_database(new_property_data)
+
