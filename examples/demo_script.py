@@ -85,4 +85,4 @@ try:
     print("calculate_commute_score", calculate_commute_score({'walk': 10, 'bike': 20, 'drive': 5}))
     print("calculate_commute_score", calculate_commute_score({'walk': -10, 'bike': 20, 'drive': 5}))
 except Exception as e:
-    print("Error:", e)
+    print("Error:", e) 
