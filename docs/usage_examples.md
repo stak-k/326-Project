@@ -4,10 +4,9 @@ This document demonstrates how to use and how to use and test the functions in t
 
 Each example below shows expected outputs and common error cases.
 
-## Simple Functions
 
-###  `validate_rental_address(address)`
 ```python
+=== Simple functions test ===
 ✅ validate_rental_address('123 Main St, Springfield, IL 62704',) → True
 ❌ validate_rental_address('',) → ValueError: Address cannot be empty.
 ✅ validate_rent_input(1500,) → True
