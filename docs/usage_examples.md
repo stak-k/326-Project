@@ -9,5 +9,6 @@ Each example below shows expected outputs and common error cases.
 ###  `validate_rental_address(address)`
 ```python
 validate_rental_address("123 Main St, Springfield, IL 62704")
+validate_rental_address("")
 Output: True
 Error Example: Address cannot be empty
