@@ -1,6 +1,6 @@
 import sys, os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from src.function_library import *
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+from function_library import *
 
 
 
@@ -56,3 +56,15 @@ run_test(validate_class_locations, [])
 run_test(validate_class_locations, ["ESJ", "HBK", "KEY", "MMH", "CCC", "TWS"])
 run_test(calculate_commute_score, {'walk': 10, 'bike': 20, 'drive': 5})
 run_test(calculate_commute_score, {'walk': -10, 'bike': 20, 'drive': 5})
+
+
+print("\n=== Geocoding Function Test ===")
+
+# Valid address test
+run_test(get_property_coordinates, "7303 Baltimore Ave, College Park, MD")
+
+# Invalid address test (should raise ValueError)
+run_test(get_property_coordinates, " ")
+
+# Nonsense address test (should likely raise ValueError for not found)
+run_test(get_property_coordinates, "1234 Nowhere Land XYZ")
