@@ -138,6 +138,7 @@ def format_address(address: str) -> str:
      
      return clean_address
 
+# Calculate a flexibility score based on the lease term of rental property.
 def calculate_flexibilty_score(lease_term: str) -> int:
      """
      Calculate a flexibility score based on the lease term of rental property.
@@ -231,3 +232,46 @@ def calculate_price_score(price: float, average_price: float) -> float:
 
 
 #Complex
+def validate_class_locations(selected, max_select: int = 5) -> list[str]:
+     """
+     Validate that the user has selected at least one class location
+     from the defined options (up to a maximum of 5)
+     
+     Args:
+          selected (list[str]): List of class locations selected by the user.
+          max_select (int): Maximum number of locations that can be selected. Default is 5.
+
+     Returns:
+          list[str]: A cleaned list of valid class locations selected by the user.
+
+     Raises:
+          ValueError: If no locations are selected or more than `max_select` are chosen.
+
+     Examples:
+          >>> validate_class_locations(["CP", "UMD"])
+          ['CP', 'UMD']
+          >>> validate_class_locations([])
+          ValueError: At least one class location must be selected.
+          >>> validate_class_locations(["CP", "UMD", "PGC", "DC", "VA", "NY"])
+          ValueError: No more than 5 class locations can be selected.
+     
+     """
+     # Check if selected is none
+     if selected is None:
+          raise ValueError("At least one class location must be selected.")
+     # Check if list is empty
+     if not selected:
+          raise ValueError("At least one class location must be selected.")
+     # Ensure no more than max_select locations are chosen
+     if len(selected) > max_select:
+          raise ValueError(f"No more than {max_select} class locations can be selected.")
+     
+     # Verify that all elemements are strings
+     if not all(isinstance(loc, str) for loc in selected):
+          raise TypeError("All class locations must be strings.")
+     
+     # Clean and return the list of selected locations
+     cleaned_locations = [loc.strip().title() for loc in selected if loc.strip()]
+
+     # Return the cleaned list of locations
+     return cleaned_locations
