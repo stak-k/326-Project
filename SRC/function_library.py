@@ -1,6 +1,8 @@
 #15 functions in this library
 #3 functions for each for now
 
+# Installed for getting coordiantes for rental property entered
+from geopy.geocoders import Nominatim
 
 #simple
 
