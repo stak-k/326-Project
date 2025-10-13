@@ -31,7 +31,7 @@ Shorter times = higher scores.
 
 - calculate_commute_time() Converts a given distance (in miles) into an estimated travel time (in minutes) depending on the chosen transportation mode — walking, biking, driving, or bus
 
-calculate_price_score() Generates a score (1–10) that reflects how affordable a rental is compared to the local average.
+- calculate_price_score() Generates a score (1–10) that reflects how affordable a rental is compared to the local average.
 Used to evaluate the “Price” portion of the total rental value score.
 
 - validate_zipcode() is important for checking that the entered ZIP code follows a valid U.S. 5-digit format.
