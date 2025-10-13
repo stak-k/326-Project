@@ -20,7 +20,36 @@ Solution: This library provides Python functions that calculate rental scores us
 
 # Installation & Setup
 
-- I dont know yet 
+To run the Rental Hunters Function Library locally:
+
+Clone the repository
+``` python 
+git clone https://github.com/<your-username>/Project-01-Function-Library.git
+cd Project-01-Function-Library
+```
+Open the repository on GitHub and click “Open with GitHub Desktop”
+
+Once cloned, open it in VS Code
+
+(Optional) — If you want to use a virtual environment (recommended for Python projects):
+``` python
+python3 -m venv venv
+source venv/bin/activate      # macOS/Linux  
+venv\Scripts\activate         # Windows
+```
+
+Install required packages
+Currently, this project only requires the geopy library for geolocation features.
+You can install it manually:
+``` python
+pip install geopy
+```
+
+
+Run the demo script to test all functions
+``` python
+python3 examples/demo_script.py
+```
 
 # Usage examples for key functions
 
