@@ -311,6 +311,11 @@ def generate_listing_summary(title: str, price: float, address: str, score: floa
           raise ValueError("Listing title cannot be empty.")
      if not address.strip():
           raise ValueError("Address cannot be empty.")
+        
+        # Clean and format
+     formatted_title = ' '.join(title.title().split())
+     formatted_address = ' '.join(address.title().split())
+     formatted_price = f"${price:,.0f} / month" 
  
      # Build and return the summary string
      summary = f"🏠 {formatted_title} — {formatted_price} at {formatted_address} | Score: {score}/10"

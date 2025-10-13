@@ -40,6 +40,11 @@ run_test(validate_email_contact, "user@example.com")
 run_test(validate_email_contact, "")
 run_test(validate_email_contact, 12345)
 run_test(validate_email_contact, "invalid-email")
+run_test(generate_listing_summary, "Spacious Apartment Near UMD", 1450, "7303 Baltimore Ave, College Park, MD", 8.7)
+run_test(generate_listing_summary, "", 1450, "7303 Baltimore Ave, College Park, MD", 8.7)               # Empty title
+run_test(generate_listing_summary, "Luxury Loft", "1400", "123 Main St", 9)                              # Invalid price type
+run_test(generate_listing_summary, "Cozy Studio", 1300, "", 8.2)                                         # Empty address
+run_test(generate_listing_summary, "Modern Apartment", 1800, "4500 Knox Rd, College Park, MD", "ten")    # Invalid score type
 
 
 print("\n=== Medium Functions Test ===")
