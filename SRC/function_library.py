@@ -273,6 +273,50 @@ def validate_email_contact(email: str) -> bool:
           raise ValueError("Invalid email format.")
      return True
 
+# Generate a formatted summary line for a property listing.
+def generate_listing_summary(title: str, price: float, address: str, score: float) -> str:
+     """
+     Generate a formatted summary line for a property listing.
+
+     Args:
+          title (str): The listing title provided by the user.
+          price (float): The monthly rent price for the property.
+          address (str): The property address.
+          score (float): The computed overall rental score (0–10).
+
+     Returns:
+          str: A formatted summary string combining the title, price, address, and score.
+
+     Raises:
+          TypeError: If title or address is not a string, or if price/score are not numeric.
+          ValueError: If any field is empty or invalid.
+
+     Examples:
+          >>> generate_listing_summary("Spacious Apartment Near UMD", 1450, "7303 Baltimore Ave, College Park, MD", 8.7)
+          '🏠 Spacious Apartment Near Umd — $1,450 / month at 7303 Baltimore Ave, College Park, Md | Score: 8.7/10'
+          >>> generate_listing_summary("", 1450, "7303 Baltimore Ave", 8.7)
+          ValueError: Listing title cannot be empty.
+          >>> generate_listing_summary("Luxury Loft", "1400", "123 Main St", 9)
+          TypeError: Price must be numeric.
+     """
+
+     # Type validation
+     if not isinstance(title, str) or not isinstance(address, str):
+          raise TypeError("Title and address must be strings.")
+     if not isinstance(price, (int, float)) or not isinstance(score, (int, float)):
+          raise TypeError("Price and score must be numeric.")
+     
+     # Empty validation
+     if not title.strip():
+          raise ValueError("Listing title cannot be empty.")
+     if not address.strip():
+          raise ValueError("Address cannot be empty.")
+ 
+     # Build and return the summary string
+     summary = f"🏠 {formatted_title} — {formatted_price} at {formatted_address} | Score: {score}/10"
+     return summary
+   
+
 #medium
 
 # Calculate a price score (1-10) based on the rental price compared to the average rent.
@@ -577,50 +621,3 @@ def get_property_coordinates(address: str) -> tuple:
           raise ValueError("Could not provide coordinates for the provided address.")
      
      return (location.latitude, location.longitude)
-
-
-
-# Generate a formatted summary line for a property listing.
-def generate_listing_summary(title: str, price: float, address: str, score: float) -> str:
-     """
-     Generate a formatted summary line for a property listing.
-
-     Args:
-          title (str): The listing title provided by the user.
-          price (float): The monthly rent price for the property.
-          address (str): The property address.
-          score (float): The computed overall rental score (0–10).
-
-     Returns:
-          str: A formatted summary string combining the title, price, address, and score.
-
-     Raises:
-          TypeError: If title or address is not a string, or if price/score are not numeric.
-          ValueError: If any field is empty or invalid.
-
-     Examples:
-          >>> generate_listing_summary("Spacious Apartment Near UMD", 1450, "7303 Baltimore Ave, College Park, MD", 8.7)
-          '🏠 Spacious Apartment Near Umd — $1,450 / month at 7303 Baltimore Ave, College Park, Md | Score: 8.7/10'
-          >>> generate_listing_summary("", 1450, "7303 Baltimore Ave", 8.7)
-          ValueError: Listing title cannot be empty.
-          >>> generate_listing_summary("Luxury Loft", "1400", "123 Main St", 9)
-          TypeError: Price must be numeric.
-     """
-
-     # Type validation
-     if not isinstance(title, str) or not isinstance(address, str):
-          raise TypeError("Title and address must be strings.")
-     if not isinstance(price, (int, float)) or not isinstance(score, (int, float)):
-          raise TypeError("Price and score must be numeric.")
-     
-     # Empty validation
-     if not title.strip():
-          raise ValueError("Listing title cannot be empty.")
-     if not address.strip():
-          raise ValueError("Address cannot be empty.")
- 
-     # Build and return the summary string
-     summary = f"🏠 {formatted_title} — {formatted_price} at {formatted_address} | Score: {score}/10"
-     return summary
-   
-#simple
