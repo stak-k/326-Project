@@ -200,6 +200,44 @@ def check_utilities_included(is_included: bool) -> bool:
      
      return is_included
 
+#listing title entered by the user is valid text 
+#(not empty or non-string), and formats it consistently using title case
+def validate_listing_title(title: str) -> str:
+     """Validate and clean the listing title format.
+
+     Args:
+          title (str): The listing title provided by the user. 
+
+     Returns:
+          str: A cleaned and formatted version of the listing title.
+
+     Raises:
+          TypeError: If the title is not a string.
+          ValueError: If the title is an empty string.
+
+     Examples:   
+          >>> validate_listing_title("spacious apartment near umd")
+          'Spacious Apartment Near Umd'
+          >>> validate_listing_title("  ")
+          ValueError: Listing title cannot be empty.
+          >>> validate_listing_title(12345)
+          TypeError: Listing title must be a string.
+          """
+     
+     # Type check
+     if not isinstance(title, str):
+          raise TypeError("Title must be a string.")
+     
+     # Clean and format the title (remove extra spaces + title case)
+     clean_title = ' '.join(title.title().split())
+     
+     # Empty check after stripping spaces
+     if not clean_title:
+          raise ValueError("Title cannot be empty.")
+     
+     return clean_title
+
+
 import re
 def validate_email_contact(email: str) -> bool:
      """Validate the email contact format.
