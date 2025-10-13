@@ -596,8 +596,8 @@ def get_property_coordinates(address: str) -> tuple:
           GeocoderServiceError: If the geocoding service encounters an error.
 
      Examples:
-          >>> get_property_coordinates("123 Main St, College Park, MD")
-          (38.9807, -76.9369)
+          >>> get_property_coordinates("7303 Baltimore Ave, College Park, MD")
+          (38.9786286, -76.937705)
           >>> get_property_coordinates("")
           ValueError: Address cannot be empty.
           >>> get_property_coordinates(12345)

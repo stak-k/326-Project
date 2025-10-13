@@ -61,7 +61,7 @@ It prevents missing or incorrectly formatted data from being submitted to the sy
         - Collaborated on designing and setting up a database structure for existing rental properties.
     Bryan Sturgis
         - Created the wireframe design for the user interface and visual layout
-        - Implemented medium, complex, and advanced functions, including geolocation and commute scoring logic.
+        - Implemented medium, complex, and advanced functions, including geolocation and scoring logic.
         - Collaborated on designing and setting up a database structure for existing rental properties.
         - Validated outputs, reviewed final test results, and assisted with integration testing and README updates.
 
