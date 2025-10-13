@@ -44,3 +44,8 @@ Each example below shows expected outputs and common error cases.
 ❌ validate_class_locations(['ESJ', 'HBK', 'KEY', 'MMH', 'CCC', 'TWS'],) → ValueError: No more than 5 class locations can be selected.
 ✅ calculate_commute_score({'walk': 10, 'bike': 20, 'drive': 5},) → 3.2
 ❌ calculate_commute_score({'walk': -10, 'bike': 20, 'drive': 5},) → ValueError: Distance for mode 'walk' cannot be negative.
+
+=== Geocoding Function Test ===
+❌ get_property_coordinates('7303 Baltimore Ave, College Park, MD',) → ConnectionError: Geocoding service error: HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Max retries exceeded with url: /search?q=7303+Baltimore+Ave%2C+College+Park%2C+Md&format=json&limit=1 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
+❌ get_property_coordinates(' ',) → ValueError: Address cannot be empty.
+❌ get_property_coordinates('1234 Nowhere Land XYZ',) → ConnectionError: Geocoding service error: HTTPSConnectionPool(host='nominatim.openstreetmap.org', port=443): Max retries exceeded with url: /search?q=1234+Nowhere+Land+Xyz&format=json&limit=1 (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1032)')))
