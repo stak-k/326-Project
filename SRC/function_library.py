@@ -200,7 +200,40 @@ def check_utilities_included(is_included: bool) -> bool:
      
      return is_included
 
+import re
+def validate_email_contact(email: str) -> bool:
+     """Validate the email contact format.
 
+     Args:
+          email (str): The email address to validate. 
+
+     Returns:
+          bool: True if the email is valid, False otherwise.
+
+     Raises:
+          TypeError: If the email is not a string.
+          ValueError: If the email is an empty string or invalid format.
+
+     Examples:   
+               >>> validate_email_contact("")
+               ValueError: Email cannot be empty.
+               >>> validate_email_contact(12345)
+               TypeError: Email must be a string.
+               >>> validate_email_contact("invalid-email")
+               ValueError: Invalid email format.
+               >>> validate_email_contact("user@example.com")
+               True
+               """
+     if not isinstance(email, str):
+          raise TypeError("Email must be a string.")
+     
+     if not email.strip():
+          raise ValueError("Email cannot be empty.")
+     
+     pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+     if not re.match(pattern, email.strip()):
+          raise ValueError("Invalid email format.")
+     return True
 
 #medium
 
