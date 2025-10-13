@@ -28,7 +28,25 @@ Solution: This library provides Python functions that calculate rental scores us
 
 # Function library overview and organization
 
-- i don't know yet
+- `src/function_library.py`: Main file containing all 15 functions (Simple, Medium, and Complex).
+- `examples/demo_script.py`: Script that tests each function and prints results to the terminal.
+- `docs/usage_examples.md`: Markdown file showing formatted usage examples.
+- `requirements.txt`: Lists external dependencies (e.g., geopy).
+
 
 # Contribution guidelines for team members
-- i don't know yet
+    Serra Tak 
+        - Created and tested multiple validation and formatting functions
+        - Organized project structure and folder setup
+        - Researched and prepared documentation sources such as CSV datasets
+        - Conducted testing, debugging, and documentation cleanup
+    Nicholas Stroble
+        - Contributed to docstring documentation and initial setup
+        - Collaborated on designing and setting up a database structure for existing rental properties.
+    Bryan Sturgi
+        - Created the wireframe design for the user interface and visual layout
+        - Implemented medium, complex, and advanced functions, including geolocation and commute scoring logic.
+        - Collaborated on designing and setting up a database structure for existing rental properties.
+        - Validated outputs, reviewed final test results, and assisted with integration testing and README updates.
+
+    
