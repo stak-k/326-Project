@@ -24,6 +24,18 @@ Each example below shows expected outputs and common error cases.
 ❌ format_rent_display('1250',) → TypeError: Rent price must be a number.
 ✅ check_utilities_included(True,) → True
 ✅ check_utilities_included(False,) → False
+✅ validate_listing_title('spacious apartment near umd',) → Spacious Apartment Near Umd
+❌ validate_listing_title('  ',) → ValueError: Title cannot be empty.
+❌ validate_listing_title(12345,) → TypeError: Title must be a string.
+✅ validate_email_contact('user@example.com',) → True
+❌ validate_email_contact('',) → ValueError: Email cannot be empty.
+❌ validate_email_contact(12345,) → TypeError: Email must be a string.
+❌ validate_email_contact('invalid-email',) → ValueError: Invalid email format.
+✅ generate_listing_summary('Spacious Apartment Near UMD', 1450, '7303 Baltimore Ave, College Park, MD', 8.7) → 🏠 Spacious Apartment Near Umd — $1,450 / month at 7303 Baltimore Ave, College Park, Md | Score: 8.7/10
+❌ generate_listing_summary('', 1450, '7303 Baltimore Ave, College Park, MD', 8.7) → ValueError: Listing title cannot be empty.
+❌ generate_listing_summary('Luxury Loft', '1400', '123 Main St', 9) → TypeError: Price and score must be numeric.
+❌ generate_listing_summary('Cozy Studio', 1300, '', 8.2) → ValueError: Address cannot be empty.
+❌ generate_listing_summary('Modern Apartment', 1800, '4500 Knox Rd, College Park, MD', 'ten') → TypeError: Price and score must be numeric.
 
 === Medium Functions Test ===
 ✅ calculate_price_score(1200, 1500) → 7.0
