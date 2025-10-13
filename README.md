@@ -37,6 +37,11 @@ Used to evaluate the “Price” portion of the total rental value score.
 - validate_zipcode() is important for checking that the entered ZIP code follows a valid U.S. 5-digit format.
 This prevents location-based calculations from failing due to invalid ZIPs.
 
+- format_address() Standardizes the address (e.g., “123 main st” → “123 Main St”) to maintain consistent data formatting before it’s sent for geocoding or comparisons.
+
+- validate_rental_address() Ensures that the user enters a valid rental address before the property is evaluated.
+It prevents missing or incorrectly formatted data from being submitted to the system.
+
 # Function library overview and organization
 
 - `src/function_library.py`: Main file containing all 15 functions (Simple, Medium, and Complex).
