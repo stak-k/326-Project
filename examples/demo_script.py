@@ -33,6 +33,13 @@ run_test(format_rent_display, -1250)
 run_test(format_rent_display, "1250")
 run_test(check_utilities_included, True)
 run_test(check_utilities_included, False)
+run_test(validate_listing_title, "spacious apartment near umd")
+run_test(validate_listing_title, "  ")
+run_test(validate_listing_title, 12345)
+run_test(validate_email_contact, "user@example.com")
+run_test(validate_email_contact, "")
+run_test(validate_email_contact, 12345)
+run_test(validate_email_contact, "invalid-email")
 
 
 print("\n=== Medium Functions Test ===")
