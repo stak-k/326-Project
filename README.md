@@ -24,8 +24,8 @@ To run the Rental Hunters Function Library locally:
 
 Clone the repository
 ``` python 
-git clone https://github.com/<your-username>/Project-01-Function-Library.git
-cd Project-01-Function-Library
+git clone https://github.com/<your-username>/326-Project.git
+cd 326-Project
 ```
 Open the repository on GitHub and click “Open with GitHub Desktop”
 
