@@ -5,10 +5,6 @@ from function_library import(
      generate_listing_summary
 )
 
-
-
-
-
 class Formatter:
      """Handles text and display formating for rental listing"""
      
@@ -67,7 +63,7 @@ class Formatter:
      @property
      def settings(self) -> dict:
          """Return current formatte as a dictionary."""
-         
+
          return {
             "currency_symbol": self._currency_symbol,
             "default_lease_term": self._default_lease_term
