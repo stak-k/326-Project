@@ -173,7 +173,8 @@ def format_listing_title(title: str) -> str:
          return clean_title
 
 # Converts numeric rent into formatted string like "$1,250 / month".
-def format_rent_display(price: float, lease_term:str | None = None) -> str:
+def format_rent_display(price: float, lease_term:str | None = None,
+                        currency_symbol: str = "$", default_lease_term: str = "Month-to-month") -> str:
         """
         Convert numeric rent into formatted string depend on lease term.
 
@@ -205,7 +206,7 @@ def format_rent_display(price: float, lease_term:str | None = None) -> str:
         if price <= 0:
             raise ValueError("Rent price must be a positive number.")
         
-        term = lease_term or self._default_lease_term
+        term = lease_term or default_lease_term
 
         if term == "6 Month":
             suffix = " / 6 month"
@@ -214,7 +215,7 @@ def format_rent_display(price: float, lease_term:str | None = None) -> str:
         else: #default or unknown
             suffix = "/ month"
         
-        return f"{self._currency_symbol}{price:,.0f} {suffix}"
+        return f"{currency_symbol}{price:,.0f} {suffix}"
 
 # Utilities check
 def check_utilities_included(is_included: bool) -> bool:
@@ -355,20 +356,21 @@ def generate_listing_summary(title: str, price: float, address: str, score: floa
             raise ValueError("Listing title cannot be empty.")
         if not address.strip():
             raise ValueError("Address cannot be empty.")
-            
-            # Clean and format
-        formatted_title = self.format_listing_title(title)
-        formatted_address = self.format_address(address)
-        formatted_price = self.format_rent_display(price, lease_term)
-
+        
         #Score validation (the system calcs score 
         #but this check helps catch unexpected futur bugs or out-of-range values )
         if not (0 <= score <= 10):
-            raise ValueError("Scor must between 0 and 100")
+            raise ValueError("Scor must between 0 and 10")
+            
+            # Clean and format
+        formatted_title = format_listing_title(title)
+        formatted_address = format_address(address)
+        formatted_price = format_rent_display(price, lease_term)
+
+        
     
         # Build and return the summary string
-        summary = (f"{formatted_title} — {formatted_price} at {formatted_address} | Score: {score}/10")
-        return summary
+        return f"{formatted_title} — {formatted_price} at {formatted_address} | Score: {score}/10"
    
 
 #medium
