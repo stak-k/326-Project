@@ -1,0 +1,1 @@
+# class that stores the rental property data entered by the user

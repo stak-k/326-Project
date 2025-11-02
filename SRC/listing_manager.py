@@ -1,0 +1,1 @@
+#class that stores multiple properties and can store into CSV
