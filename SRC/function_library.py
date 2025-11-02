@@ -4,6 +4,7 @@
 # Installed for getting coordiantes for rental property entered
 from geopy.geocoders import Nominatim
 from geopy.exc import GeocoderServiceError, GeocoderTimedOut
+from geopy.distance import geodesic
 
 #simple
 
@@ -418,6 +419,33 @@ def calculate_commute_time(distance: float, mode: str) -> float:
      
      return time_minutes
    
+# Calculate distance
+def calculate_distance(start_address: str, end_address: str) -> float:
+     """
+     Calculate the distance in miles between 2 addresses using geopy
+     
+     Args:
+          start_address (str): The starting address
+          end_address (str): The end adress
+          
+     Returns:
+          float: Distance in miles (rounded to 2 decimal places)
+
+     Raises:
+        TypeError: If either input is not a string.
+        ValueError: If either address is empty or could not be geocoded.
+
+     Examples:
+        >>> calculate_distance("7303 Baltimore Ave, College Park, MD", "Edward St. John Learning Center, College Park, MD")
+        1.25
+          """
+     
+     start_coords = get_property_coordinates(start_address)
+     end_coords = get_property_coordinates(end_address)
+
+     # Calculate distance in miles
+     miles = round(geodesic(start_coords, end_coords).miles, 2)
+
 
 # Calculate a flexibility score based on the lease term of rental property.
 def calculate_flexibilty_score(lease_term: str) -> int:
