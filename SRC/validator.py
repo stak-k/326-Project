@@ -27,7 +27,7 @@ class Validator:
         return validate_rent_input(rent)
 
     # Zipcode
-    def validate_zip(self, zipcode: str) -> bool:
+    def validate_zip(self, zipcode: int) -> bool:
         """Validate ZIP code format."""
         return validate_zipcode(zipcode)
 
