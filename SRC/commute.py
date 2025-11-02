@@ -64,3 +64,25 @@ class Commute:
     def time_minutes(self):
         """Return calculated travel time in minutes."""
         return self._time_minutes
+    
+
+    def refresh_commute(self):
+        """Recalculate distance and time (if addresses changed)."""
+        self._distance_miles = calculate_distance(self._start_address, self._end_address)
+        self._time_minutes = calculate_commute_time(self._distance_miles, self._mode)
+
+    def summary(self) -> dict:
+        """Return a full commute summary dictionary."""
+        return {
+            "start": self._start_address,
+            "end": self._end_address,
+            "mode": self._mode,
+            "distance_miles": self._distance_miles,
+            "time_minutes": self._time_minutes
+        }
+
+    def __str__(self):
+        """Readable text summary for printing or debugging."""
+        return (f"{self._mode.title()} commute from '{self._start_address}' -> "
+                f"'{self._end_address}': {self._distance_miles} miles, "
+                f"{self._time_minutes} min")
