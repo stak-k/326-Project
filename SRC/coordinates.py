@@ -42,5 +42,9 @@ class Coordinates:
     # String Representation
     # For easy debugging and display
     def __str__(self):
+            """
+    Returns a string representation of the object showing 
+    the address and its latitude and longitude.
+    """
         lat, lon = self._coordinates
         return f"Address: {self._address}, Latitude: {lat}, Longitude: {lon}"
