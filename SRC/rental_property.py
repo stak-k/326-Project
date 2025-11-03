@@ -38,8 +38,6 @@ class RentalProperty:
         self._utilities_included = bool(utilities_included)
 
 
-
-
     # Address Getter
     @property
     def address(self):
