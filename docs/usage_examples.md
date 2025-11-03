@@ -101,4 +101,22 @@ Each example below shows expected outputs and common error cases.
 ❌ Invalid Locations (too many): ValueError - No more than 5 class locations can be selected.
 ✅ String Representation: Validator(active: address, rent, zip, title, email, class locations)
 
+=== PropertyManager Class Tests ===
+✅ Add Valid Property: {'Title': 'Cozy Studio', 'Address': '123 Main St, College Park, MD 20740', 'Rent': 1250.0, 'Score': 8.9}
+✅ Add Another Property: {'Title': 'Luxury Apartment', 'Address': '4500 Knox Rd, College Park, MD 20740', 'Rent': 1950.0, 'Score': 9.5}
+❌ Invalid Title (empty): ValueError - Title cannot be empty.
+❌ Invalid Address (non-string): TypeError - Title must be a string.
+❌ Invalid Rent (negative): ValueError - Rent must be positive.
+❌ Invalid Rent (non-numeric): ValueError - Rent must be a numeric value.
+❌ Invalid Score (too high): ValueError - Score must be between 0 and 10.
+❌ Invalid ZIP (letters): ValueError - ZIP code must be a 5-digit number.
+❌ Invalid ZIP (short): ValueError - ZIP code must be a 5-digit number.
+✅ List All Properties: [{'Title': 'Cozy Studio', 'Address': '123 Main St, College Park, MD 20740', 'Rent': 1250.0, 'Score': 8.9}, {'Title': 'Luxury Apartment', 'Address': '4500 Knox Rd, College Park, MD 20740', 'Rent': 1950.0, 'Score': 9.5}]
+✅ Save Properties to CSV: None
+✅ Load Properties from CSV: [{'Title': 'Cozy Studio', 'Address': '123 Main St, College Park, MD 20740', 'Rent': '1250.0', 'Score': '8.9'}, {'Title': 'Luxury Apartment', 'Address': '4500 Knox Rd, College Park, MD 20740', 'Rent': '1950.0', 'Score': '9.5'}]
+✅ String Representation (__str__): PropertyManager(2 listings stored)
+
+Testing Empty Save Scenario:
+❌ Save with No Properties: ValueError - No properties to save.
+
 === Commute Class Test ===
