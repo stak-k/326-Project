@@ -8,6 +8,7 @@ from validator import Validator
 from coordinates import Coordinates
 from listing_manager import PropertyManager
 from rental_property import RentalProperty
+from score_calculator import ScoreCalculator
 
 def run_test(description, func_name, *args):
     """Helper to run tests neatly with labels."""
@@ -184,6 +185,9 @@ run_test("Invalid ZIP (short)", invalid_zip_short)
 run_test("Invalid Address (empty)", invalid_address_empty)
 
 run_test("String Representation (__str__)", str, rp)
+
+print("\n=== ScoreCalculator Class Tests ===")
+
 
 print("\n=== Coordinates Class Tests ===")
 
