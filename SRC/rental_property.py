@@ -4,10 +4,7 @@
 from validator import Validator
 from coordinates import Coordinates
 # Import necessary formatters
-from formatter import (
-    format_address,
-    format_rent_display
-)
+from formatter import ( format_address, format_rent_display )
 
 class RentalProperty:
     """Stores validated data for single property."""
@@ -31,7 +28,7 @@ class RentalProperty:
             self._rent = float(rent)
 
         # Validate and set zipcode
-        if self._validator.validate_zip(zipcode):
+        if self._validator.validate_zip(str(zipcode)):
             self._zipcode = int(zipcode)
 
         # Set utilities included
@@ -51,7 +48,7 @@ class RentalProperty:
         if self._validator.validate_address(new_address):
             self._address = format_address(new_address)
             # Update coordinates when address changes
-            self.coordinates = Coordinates(self._address).coordinates
+            self._coordinates = Coordinates(self._address).coordinates
 
         
     # Rent Getter 
@@ -77,7 +74,7 @@ class RentalProperty:
     @zipcode.setter
     def zipcode(self, new_zipcode: int):
         """Sets the zipcode for the rental property after validation"""
-        if self._validator.validate_zip(new_zipcode):
+        if self._validator.validate_zip(str(new_zipcode)):
             self._zipcode = int(new_zipcode) 
             
     # Utilities Included Getter 
@@ -102,8 +99,13 @@ class RentalProperty:
     def summary(self):
          """Returns a summary representation of the property"""
          return{ "address": self._address,
-            "rent": self._rent,
+            "rent": format_rent_display(self._rent),
             "zipcode": self._zipcode,
             "utilities_included": self._utilities_included,
             "coordinates": self._coordinates
             }                 
+    
+    def __str__(self):
+        """Readable string representation of the rental property"""
+        included = "Yes" if self._utilities_included else "No"
+        return f"{self._address} — {format_rent_display(self._rent)} | ZIP: {self._zipcode} | Utilities Included: {included}"
