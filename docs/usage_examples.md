@@ -101,7 +101,7 @@ Each example below shows expected outputs and common error cases.
 ❌ Invalid Locations (too many): ValueError - No more than 5 class locations can be selected.
 ✅ String Representation: Validator(active: address, rent, zip, title, email, class locations)
 
-=== PropertyManager Class Tests ===
+=== PropertyManager Class Tests (listing_manager) ===
 ✅ Add Valid Property: {'Title': 'Cozy Studio', 'Address': '123 Main St, College Park, MD 20740', 'Rent': 1250.0, 'Score': 8.9}
 ✅ Add Another Property: {'Title': 'Luxury Apartment', 'Address': '4500 Knox Rd, College Park, MD 20740', 'Rent': 1950.0, 'Score': 9.5}
 ❌ Invalid Title (empty): ValueError - Title cannot be empty.
