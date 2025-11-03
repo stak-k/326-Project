@@ -103,3 +103,4 @@ def invalid_mode():
 run_test("Invalid Start Address (empty)", invalid_start_address)
 run_test("Invalid Mode (unsupported)", invalid_mode)
 
+print("\n=== Validator Class Tests ===")

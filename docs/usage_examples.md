@@ -67,3 +67,24 @@ Each example below shows expected outputs and common error cases.
 === CLASS TESTS ===
 
 === Formatter Class Tests===
+✅ Format Address: 123 Main St, College Park, MD
+❌ Invalid Address (empty): ValueError - Address cannot be empty.
+❌ Invalid Address (number): TypeError - Address must be a string.
+✅ Format Title: Spacious Apartment Near Umd
+❌ Invalid Title (empty): ValueError - Title cannot be empty.
+✅ Format Rent Display (default term): $1,450 / month
+✅ Format Rent Display (custom term): $1,800 / month
+❌ Invalid Rent (negative): ValueError - Rent price must be a positive number.
+❌ Invalid Rent (string price): TypeError - Rent price must be a number.
+✅ Generate Summary: Cozy Studio — $1,250 / month at 123 Main St, College Park, MD | Score: 9.1/10
+❌ Invalid Summary (missing address): ValueError - Address cannot be empty.
+❌ Invalid Summary (wrong score type): TypeError - Price and score must be numeric.
+✅ Settings Property: {'currency_symbol': '$', 'default_lease_term': 'Month-to-month'}
+✅ String Representation: Formatter(currency='$', default_lease_term='Month-to-month')
+
+=== Commute Class Test ===
+
+
+=== Validator  Class Test ===
+
+
