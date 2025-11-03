@@ -55,6 +55,51 @@ run_test("Settings Property", lambda: f.settings)
 #valid
 run_test("String Representation", str, f)
 
+print("\n=== Validator Class Tests ===")
+
+v = Validator
+
+#valid_address
+#valid test
+run_test("Valid Address", v.validate_address, "123 Main St, College Park, MD")
+#invalid test
+run_test("Invalid Address (empty)", v.validate_address, "")
+run_test("Invalid Address (number)", v.validate_address, 123)
+
+#validate_rent
+#valid test
+run_test("Valid Rent", v.validate_rent, 1500)
+#invalid test
+run_test("Invalid Address (number)", v.validate_address, 123)
+run_test("Invalid Rent (negative)", v.validate_rent, -1200)
+run_test("Invalid Rent (string)", v.validate_rent, "one thousand")
+
+#validate_zip
+#valid test
+run_test("Valid ZIP", v.validate_zip, "20740")
+#invalid test
+run_test("Invalid ZIP (too short)", v.validate_zip, "207")
+
+#validate_title
+#valid test
+run_test("Valid Title", v.validate_title, "Spacious Apartment Near UMD")
+#invalid test
+run_test("Invalid Title (empty)", v.validate_title, "")
+
+#validate_email
+#valid test
+run_test("Valid Email", v.validate_email, "user@example.com")
+#invalid test
+run_test("Invalid Email (no @)", v.validate_email, "invalidemail.com")
+
+#validate_locations
+#valid test
+run_test("Valid Class Locations", v.validate_locations, ["ESJ", "HBK", "KEY"])
+#invalid test
+run_test("Invalid Locations (too many)", v.validate_locations, ["ESJ", "HBK", "KEY", "MMH", "CCC", "TWS"])
+
+#__str__ String Representation
+run_test("String Representation", str, v)
 
 print("\n=== Commute Class Tests ===")
 
@@ -103,4 +148,3 @@ def invalid_mode():
 run_test("Invalid Start Address (empty)", invalid_start_address)
 run_test("Invalid Mode (unsupported)", invalid_mode)
 
-print("\n=== Validator Class Tests ===")
