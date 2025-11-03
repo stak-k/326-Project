@@ -7,10 +7,29 @@ from coordinates import Coordinates
 from formatter import ( format_address, format_rent_display )
 
 class RentalProperty:
-    """Stores validated data for single property."""
+    """Stores validated data for single property.
+    
+    Attributes:
+        _address (str): Formatted property address
+        _rent (float): Validated rent amount
+        _zipcode (int): 5 digit zipcode   
+        _utilities_included (bool): Whether utilities are included in rent
+        _coordinates (tuple): (latitude, longitude) of the property
+        _validator (Validator): Validator instance for data validation
+    """
 
     def __init__(self, address: str, rent: float, zipcode: int, utilities_included: bool):
-        """Initialize a rental property with validation and formatting"""
+        """Initialize a rental property with validation and formatting
+        Args:
+            address (str): Full rental address.
+            rent (float): Monthly rent amount.
+            zipcode (int): 5-digit ZIP code for the property.
+            utilities_included (bool): Whether utilities are included.
+
+        Raises:
+            TypeError: If an argument has an incorrect data type.
+            ValueError: If an argument fails validation rules.     
+        """
 
         # Create helper objects
         self._validator = Validator()
@@ -44,7 +63,11 @@ class RentalProperty:
     # Adress Setter
     @address.setter
     def address(self, new_address: str):
-        """Sets the rental property address after validation and formatting"""
+        """Sets the rental property address after validation and formatting
+        
+        Args:
+            new_address (str): The new address to set.
+        """
         if self._validator.validate_address(new_address):
             self._address = format_address(new_address)
             # Update coordinates when address changes
@@ -60,7 +83,10 @@ class RentalProperty:
     # Rent Setter
     @rent.setter
     def rent(self, new_rent: float):
-        """Sets the rent for the rental property after validation"""
+        """Sets the rent for the rental property after validation
+         Args:
+            new_rent (float): New rent value to set.
+        """
         if self._validator.validate_rent(new_rent):
             self._rent = float(new_rent)
             
@@ -73,7 +99,10 @@ class RentalProperty:
     # Zipcode Setter
     @zipcode.setter
     def zipcode(self, new_zipcode: int):
-        """Sets the zipcode for the rental property after validation"""
+        """Sets the zipcode for the rental property after validation
+            Args:
+                new_zipcode (int): New zipcode value to set.
+        """
         if self._validator.validate_zip(str(new_zipcode)):
             self._zipcode = int(new_zipcode) 
             
@@ -86,7 +115,10 @@ class RentalProperty:
     # Utilities Included Setter
     @utilities_included.setter
     def utilities_included(self, included: bool):
-         """Sets whether utilities are included in the rent"""
+         """Sets whether utilities are included in the rent
+         Args:
+            included (bool): True if utilities are included, False otherwise.
+         """
          self._utilities_included = bool(included)
          
     # Coordinates Getter
@@ -97,7 +129,11 @@ class RentalProperty:
     
     # Summary Method for saving or exporting data 
     def summary(self):
-         """Returns a summary representation of the property"""
+         """Returns a summary representation of the property
+         
+         Returns:
+            dict: A dictionary containing address, rent, ZIP, utilities, and coordinates.
+         """
          return{ "address": self._address,
             "rent": format_rent_display(self._rent),
             "zipcode": self._zipcode,
@@ -106,6 +142,10 @@ class RentalProperty:
             }                 
     
     def __str__(self):
-        """Readable string representation of the rental property"""
+        """Readable string representation of the rental property
+        
+        Returns:
+            str: A descriptive string representation of the property details.
+        """
         included = "Yes" if self._utilities_included else "No"
         return f"{self._address} — {format_rent_display(self._rent)} | ZIP: {self._zipcode} | Utilities Included: {included}"
