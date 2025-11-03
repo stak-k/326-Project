@@ -60,7 +60,7 @@ print("\n=== Commute Class Tests ===")
 
 # valid object
 c = Commute("7303 Baltimore Ave, College Park, MD", 
-            "Edward St. John Learning Center, College Park, MD", 
+            "8500 Paint Branch Dr, College Park, MD",
             "walk")
 
 # object creation confirmation valid test
