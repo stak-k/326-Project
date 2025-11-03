@@ -185,7 +185,47 @@ run_test("Invalid Address (empty)", invalid_address_empty)
 
 run_test("String Representation (__str__)", str, rp)
 
+print("\n=== Coordinates Class Tests ===")
 
+# Create a valid Coordinates object
+def create_coords():
+    return Coordinates("7303 Baltimore Ave, College Park, MD")
+
+run_test("Create Coordinates Object", create_coords)
+c = create_coords()
+
+#valid tests
+def get_address():
+    return c.address
+
+def get_coordinates():
+    return c.coordinates
+
+def string_output():
+    return str(c)
+
+run_test("Get Address", get_address)
+run_test("Get Coordinates Tuple", get_coordinates)
+run_test("String Representation (__str__)", string_output)
+
+#update test
+def update_address():
+    c.address = "4500 Knox Rd, College Park, MD"
+    return c.address()
+run_test("Update Address and Refresh Coordinates", update_address)
+
+def check_coordinates_refresh():
+    return c.coordinates
+run_test("Check Coordinates After Address Update", check_coordinates_refresh)
+
+def manual_refresh():
+    return c.refresh_coordinates()
+run_test("Manual Refresh of Coordinates", manual_refresh)
+
+#invalid test
+def invalid_address_set():
+    c.address = ""
+run_test("Invalid Address Set (empty)", invalid_address_set)
 
 print("\n=== Commute Class Tests ===")
 # valid object
