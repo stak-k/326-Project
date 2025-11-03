@@ -6,6 +6,7 @@ from formatter import Formatter
 from commute import Commute
 from validator import Validator
 from coordinates import Coordinates
+from listing_manager import PropertyManager
 
 def run_test(description, func_name, *args):
     """Helper to run tests neatly with labels."""
@@ -100,6 +101,44 @@ run_test("Invalid Locations (too many)", v.validate_locations, ["ESJ", "HBK", "K
 
 #__str__ String Representation
 run_test("String Representation", str, v)
+
+
+print("\n=== PropertyManager Class Tests ===")
+
+pm = PropertyManager()
+
+# add_property 
+# valid test
+run_test("Add Valid Property", pm.add_property,
+         "Cozy Studio", "123 Main St", "College Park", "MD", "20740", 1250, 8.9)
+run_test("Add Another Property", pm.add_property,
+         "Luxury Apartment", "4500 Knox Rd", "College Park", "MD", "20740", "1,950", 9.5)
+# invalid tests
+run_test("Invalid Title (empty)", pm.add_property,
+         "", "123 Main St", "College Park", "MD", "20740", 1250, 8.9)
+run_test("Invalid Address (non-string)", pm.add_property,
+         123, "Main St", "College Park", "MD", "20740", 1250, 8.9)
+run_test("Invalid Rent (negative)", pm.add_property,
+         "Cozy Studio", "123 Main St", "College Park", "MD", "20740", -1000, 8.9)
+run_test("Invalid Rent (non-numeric)", pm.add_property,
+         "Cozy Studio", "123 Main St", "College Park", "MD", "20740", "one thousand", 8.9)
+run_test("Invalid Score (too high)", pm.add_property,
+         "Cozy Studio", "123 Main St", "College Park", "MD", "20740", 1250, 12)
+run_test("Invalid ZIP (letters)", pm.add_property,
+         "Cozy Studio", "123 Main St", "College Park", "MD", "20A40", 1250, 8.9)
+run_test("Invalid ZIP (short)", pm.add_property,
+         "Cozy Studio", "123 Main St", "College Park", "MD", "207", 1250, 8.9)
+
+#valids
+run_test("List All Properties", pm.list_properties)
+run_test("Save Properties to CSV", pm.save_to_csv, "test_properties.csv")
+run_test("Load Properties from CSV", pm.load_from_csv, "test_properties.csv")
+run_test("String Representation (__str__)", str, pm)
+
+# CSV save with no data
+print("\nTesting Empty Save Scenario:")
+pm_empty = PropertyManager()
+run_test("Save with No Properties", pm_empty.save_to_csv, "empty.csv")
 
 print("\n=== Commute Class Tests ===")
 
