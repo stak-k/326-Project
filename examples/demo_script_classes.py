@@ -57,7 +57,7 @@ run_test("String Representation", str, f)
 
 print("\n=== Validator Class Tests ===")
 
-v = Validator
+v = Validator()
 
 #valid_address
 #valid test
