@@ -188,6 +188,45 @@ run_test("String Representation (__str__)", str, rp)
 
 print("\n=== ScoreCalculator Class Tests ===")
 
+# Create ScoreCalculator Object
+sc = ScoreCalculator()
+def calculator_created():
+    return "ScoreCalculator object created"
+run_test("Create ScoreCalculator Object", calculator_created)
+
+#valid tests
+def price_score_test():
+    return sc.price_score(1400)
+
+def flexibility_score_test():
+    return sc.flexibility_score(6)
+
+def commute_score_test():
+    commute_time = {"drive": 15, "bike": 30, "walk": 60}
+    return sc.commute_score(commute_time)
+
+def overall_score_test():
+    commute_time = {"drive": 15, "bike": 30, "walk": 60}
+    return sc.overall_score(1400, 6, commute_time)
+
+run_test("Price Score Calculation", price_score_test)
+run_test("Flexibility Score Calculation", flexibility_score_test)
+run_test("Commute Score Calculation", commute_score_test)
+run_test("Overall Score Calculation", overall_score_test)
+
+#invalid tests
+def invalid_price_score():
+    return sc.price_score(-1200)
+run_test("Invalid Price Score (negative rent)", invalid_price_score)
+
+def invalid_flexibility_score():
+    return sc.flexibility_score("Month-to-Month")
+run_test("Invalid Flexibility Score (non-integer)", invalid_flexibility_score)
+
+def invalid_commute_score():
+    commute_time = {"drive": -10, "bike": 20}
+    return sc.commute_score(commute_time)
+run_test("Invalid Commute Score (negative time)", invalid_commute_score)
 
 print("\n=== Coordinates Class Tests ===")
 
