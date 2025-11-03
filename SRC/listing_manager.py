@@ -77,7 +77,7 @@ class PropertyManager:
             float: The validated score.
 
         Raises:
-            ValueError: If score is outside 0–10.
+            ValueError: If score is outside 0-10.
         """
         if not isinstance(score, (int, float)):
             raise TypeError("Score must be numeric.")
