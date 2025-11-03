@@ -145,7 +145,7 @@ Testing Empty Save Scenario:
 ✅ Get Address: 7303 Baltimore Ave, College Park, MD
 ✅ Get Coordinates Tuple: (38.9786286, -76.937705)
 ✅ String Representation (__str__): Address: 7303 Baltimore Ave, College Park, MD, Latitude: 38.9786286, Longitude: -76.937705
-❌ Update Address and Refresh Coordinates: TypeError - 'str' object is not callable
+✅ Update Address and Refresh Coordinates: 4500 Knox Rd, College Park, MD
 ✅ Check Coordinates After Address Update: (38.980723, -76.936795)
 ✅ Manual Refresh of Coordinates: (38.980723, -76.936795)
 ❌ Invalid Address Set (empty): ValueError - Address cannot be empty.
