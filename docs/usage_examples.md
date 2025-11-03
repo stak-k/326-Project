@@ -82,9 +82,23 @@ Each example below shows expected outputs and common error cases.
 ✅ Settings Property: {'currency_symbol': '$', 'default_lease_term': 'Month-to-month'}
 ✅ String Representation: Formatter(currency='$', default_lease_term='Month-to-month')
 
-=== Commute Class Test ===
-
 
 === Validator  Class Test ===
+✅ Valid Address: True
+❌ Invalid Address (empty): ValueError - Address cannot be empty.
+❌ Invalid Address (number): TypeError - Address must be a string.
+✅ Valid Rent: True
+❌ Invalid Address (number): TypeError - Address must be a string.
+❌ Invalid Rent (negative): ValueError - Rent price cannot be negative or equal to zero.
+❌ Invalid Rent (string): TypeError - Rent price must be a number.
+✅ Valid ZIP: True
+❌ Invalid ZIP (too short): ValueError - Zipcode must be 5 digits.
+✅ Valid Title: Spacious Apartment Near Umd
+❌ Invalid Title (empty): ValueError - Title cannot be empty.
+✅ Valid Email: True
+❌ Invalid Email (no @): ValueError - Invalid email format.
+✅ Valid Class Locations: ['Esj', 'Hbk', 'Key']
+❌ Invalid Locations (too many): ValueError - No more than 5 class locations can be selected.
+✅ String Representation: Validator(active: address, rent, zip, title, email, class locations)
 
-
+=== Commute Class Test ===
