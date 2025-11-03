@@ -199,7 +199,7 @@ def price_score_test():
     return sc.price_score(1400)
 
 def flexibility_score_test():
-    return sc.flexibility_score(6)
+    return sc.flexibility_score("6")#
 
 def commute_score_test():
     commute_time = {"drive": 15, "bike": 30, "walk": 60}
@@ -220,7 +220,7 @@ def invalid_price_score():
 run_test("Invalid Price Score (negative rent)", invalid_price_score)
 
 def invalid_flexibility_score():
-    return sc.flexibility_score("Month-to-Month")
+    return sc.flexibility_score(-6)
 run_test("Invalid Flexibility Score (non-integer)", invalid_flexibility_score)
 
 def invalid_commute_score():

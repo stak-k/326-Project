@@ -42,7 +42,7 @@ class ScoreCalculator:
         Returns:
             float: Flexibility score between 0 and 10 based on how flexible or rigid.
         """
-        return calculate_flexibilty_score(lease_term)
+        return calculate_flexibilty_score(str(lease_term))
     
     # Commute Score
     def commute_score(self, distances: dict) -> float:
