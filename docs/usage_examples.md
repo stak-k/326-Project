@@ -66,24 +66,23 @@ Each example below shows expected outputs and common error cases.
 === CLASS TESTS ===
 === CLASS TESTS ===
 
-=== Formatter Class Tests===
-✅ Format Address: 123 Main St, College Park, MD
+=== Formatter Class Tests ===
+✅ Format Address: 123 Main St, College Park, MD     
 ❌ Invalid Address (empty): ValueError - Address cannot be empty.
 ❌ Invalid Address (number): TypeError - Address must be a string.
 ✅ Format Title: Spacious Apartment Near Umd
 ❌ Invalid Title (empty): ValueError - Title cannot be empty.
 ✅ Format Rent Display (default term): $1,450 / month
-✅ Format Rent Display (custom term): $1,800 / month
+✅ Format Rent Display (custom term): $1,800 / month 
 ❌ Invalid Rent (negative): ValueError - Rent price must be a positive number.
 ❌ Invalid Rent (string price): TypeError - Rent price must be a number.
-✅ Generate Summary: Cozy Studio — $1,250 / month at 123 Main St, College Park, MD | Score: 9.1/10
+✅ Generate Summary: Cozy Studio — $1,250 / month at 123 Main St, College Park, MD | Score: 9.1/10        
 ❌ Invalid Summary (missing address): ValueError - Address cannot be empty.
 ❌ Invalid Summary (wrong score type): TypeError - Price and score must be numeric.
 ✅ Settings Property: {'currency_symbol': '$', 'default_lease_term': 'Month-to-month'}
 ✅ String Representation: Formatter(currency='$', default_lease_term='Month-to-month')
 
-
-=== Validator  Class Test ===
+=== Validator Class Tests ===
 ✅ Valid Address: True
 ❌ Invalid Address (empty): ValueError - Address cannot be empty.
 ❌ Invalid Address (number): TypeError - Address must be a string.
@@ -97,11 +96,11 @@ Each example below shows expected outputs and common error cases.
 ❌ Invalid Title (empty): ValueError - Title cannot be empty.
 ✅ Valid Email: True
 ❌ Invalid Email (no @): ValueError - Invalid email format.
-✅ Valid Class Locations: ['Esj', 'Hbk', 'Key']
+✅ Valid Class Locations: ['Esj', 'Hbk', 'Key']      
 ❌ Invalid Locations (too many): ValueError - No more than 5 class locations can be selected.
 ✅ String Representation: Validator(active: address, rent, zip, title, email, class locations)
 
-=== PropertyManager Class Tests (listing_manager) ===
+=== PropertyManager Class Tests ===
 ✅ Add Valid Property: {'Title': 'Cozy Studio', 'Address': '123 Main St, College Park, MD 20740', 'Rent': 1250.0, 'Score': 8.9}
 ✅ Add Another Property: {'Title': 'Luxury Apartment', 'Address': '4500 Knox Rd, College Park, MD 20740', 'Rent': 1950.0, 'Score': 9.5}
 ❌ Invalid Title (empty): ValueError - Title cannot be empty.
@@ -135,10 +134,10 @@ Testing Empty Save Scenario:
 ✅ Price Score Calculation: 5.67
 ✅ Flexibility Score Calculation: 7
 ✅ Commute Score Calculation: 1.6
-❌ Overall Score Calculation: KeyError - '6'
-❌ Invalid Price Score (negative rent): ValueError - Price and average price must be positive numbers.
+✅ Overall Score Calculation: 4.715
+❌ Invalid Price Score (negative rent): ValueError - Price and average price must be positive numbers.    
 ❌ Invalid Flexibility Score (non-integer): KeyError - '-6'
-❌ Invalid Commute Score (negative time): ValueError - Distance for mode 'drive' cannot be negative.
+❌ Invalid Commute Score (negative time): ValueError - Distance for mode 'drive' cannot be negative.      
 
 === Coordinates Class Tests ===
 ✅ Create Coordinates Object: Address: 7303 Baltimore Ave, College Park, MD, Latitude: 38.9786286, Longitude: -76.937705
@@ -149,6 +148,3 @@ Testing Empty Save Scenario:
 ✅ Check Coordinates After Address Update: (38.980723, -76.936795)
 ✅ Manual Refresh of Coordinates: (38.980723, -76.936795)
 ❌ Invalid Address Set (empty): ValueError - Address cannot be empty.
-
-=== Commute Class Test ===
-#The test results cannot be accessed at the moment because there is a problem with the tester's computer. It will be resolved as soon as possible.
