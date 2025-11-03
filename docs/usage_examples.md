@@ -119,4 +119,15 @@ Each example below shows expected outputs and common error cases.
 Testing Empty Save Scenario:
 ❌ Save with No Properties: ValueError - No properties to save.
 
+=== RentalProperty Class Tests ===
+✅ Valid Property Creation: {'address': '7303 Baltimore Ave, College Park, MD', 'rent': '$1,450 / month', 'zipcode': 20740, 'utilities_included': True, 'coordinates': (38.9786286, -76.937705)}
+✅ Updated Rent: {'address': '7303 Baltimore Ave, College Park, MD', 'rent': '$1,600 / month', 'zipcode': 20740, 'utilities_included': True, 'coordinates': (38.9786286, -76.937705)}
+✅ Updated Address: {'address': '4500 Knox Rd, College Park, MD', 'rent': '$1,600 / month', 'zipcode': 20740, 'utilities_included': True, 'coordinates': (38.980723, -76.936795)}
+✅ Updated ZIP: {'address': '4500 Knox Rd, College Park, MD', 'rent': '$1,600 / month', 'zipcode': 20742, 'utilities_included': True, 'coordinates': (38.980723, -76.936795)}
+✅ Updated Utilities Included: {'address': '4500 Knox Rd, College Park, MD', 'rent': '$1,600 / month', 'zipcode': 20742, 'utilities_included': False, 'coordinates': (38.980723, -76.936795)}
+❌ Invalid Rent (negative): ValueError - Rent price cannot be negative or equal to zero.
+❌ Invalid ZIP (short): ValueError - Zipcode must be 5 digits.
+❌ Invalid Address (empty): ValueError - Address cannot be empty.
+✅ String Representation (__str__): 4500 Knox Rd, College Park, MD — $1,600 / month | ZIP: 20742 | Utilities Included: No
+
 === Commute Class Test ===

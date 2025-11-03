@@ -7,6 +7,7 @@ from commute import Commute
 from validator import Validator
 from coordinates import Coordinates
 from listing_manager import PropertyManager
+from rental_property import RentalProperty
 
 def run_test(description, func_name, *args):
     """Helper to run tests neatly with labels."""
@@ -140,8 +141,53 @@ print("\nTesting Empty Save Scenario:")
 pm_empty = PropertyManager()
 run_test("Save with No Properties", pm_empty.save_to_csv, "empty.csv")
 
-print("\n=== Commute Class Tests ===")
 
+print("\n=== RentalProperty Class Tests ===")
+# Valid Property Creation
+rp = RentalProperty("7303 Baltimore Ave, College Park, MD", 1450, "20740", True)
+run_test("Valid Property Creation", rp.summary)
+
+#update tests
+def test_updated_rent():
+    rp.rent = 1600
+    return rp.summary()
+
+def test_updated_address():
+    rp.address = "4500 Knox Rd, College Park, MD"
+    return rp.summary()
+
+def test_updated_zip():
+    rp.zipcode = "20742"
+    return rp.summary()
+
+def test_updated_utilities():
+    rp.utilities_included = False
+    return rp.summary()
+
+run_test("Updated Rent", test_updated_rent)
+run_test("Updated Address", test_updated_address)
+run_test("Updated ZIP", test_updated_zip)
+run_test("Updated Utilities Included", test_updated_utilities)
+
+#invalid test
+def invalid_rent_negative():
+    rp.rent = -1000
+
+def invalid_zip_short():
+    rp.zipcode = "207"
+
+def invalid_address_empty():
+    rp.address = ""
+
+run_test("Invalid Rent (negative)", invalid_rent_negative)
+run_test("Invalid ZIP (short)", invalid_zip_short)
+run_test("Invalid Address (empty)", invalid_address_empty)
+
+run_test("String Representation (__str__)", str, rp)
+
+
+
+print("\n=== Commute Class Tests ===")
 # valid object
 c = Commute("7303 Baltimore Ave, College Park, MD", 
             "8500 Paint Branch Dr, College Park, MD",
