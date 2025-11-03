@@ -207,7 +207,7 @@ def commute_score_test():
 
 def overall_score_test():
     commute_time = {"drive": 15, "bike": 30, "walk": 60}
-    return sc.overall_score(1400, 6, commute_time)
+    return sc.overall_score(1400, "6 Months", commute_time)
 
 run_test("Price Score Calculation", price_score_test)
 run_test("Flexibility Score Calculation", flexibility_score_test)
