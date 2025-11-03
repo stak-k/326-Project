@@ -255,6 +255,8 @@ run_test("String Representation (__str__)", string_output)
 def update_address():
     c.address = "4500 Knox Rd, College Park, MD"
     return c.address
+def check_coordinates_refresh():
+    return c.coordinates
 run_test("Update Address and Refresh Coordinates", update_address)
 
 def check_coordinates_refresh():
