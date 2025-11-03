@@ -199,7 +199,7 @@ def price_score_test():
     return sc.price_score(1400)
 
 def flexibility_score_test():
-    return sc.flexibility_score(6)
+    return sc.flexibility_score("6 Months")
 
 def commute_score_test():
     commute_time = {"drive": 15, "bike": 30, "walk": 60}
