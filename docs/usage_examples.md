@@ -130,6 +130,15 @@ Testing Empty Save Scenario:
 ❌ Invalid Address (empty): ValueError - Address cannot be empty.
 ✅ String Representation (__str__): 4500 Knox Rd, College Park, MD — $1,600 / month | ZIP: 20742 | Utilities Included: No
 
+=== ScoreCalculator Class Tests ===
+✅ Create ScoreCalculator Object: ScoreCalculator object created
+✅ Price Score Calculation: 5.67
+✅ Flexibility Score Calculation: 7
+✅ Commute Score Calculation: 1.6
+❌ Overall Score Calculation: KeyError - '6'
+❌ Invalid Price Score (negative rent): ValueError - Price and average price must be positive numbers.
+❌ Invalid Flexibility Score (non-integer): KeyError - '-6'
+❌ Invalid Commute Score (negative time): ValueError - Distance for mode 'drive' cannot be negative.
 
 === Coordinates Class Tests ===
 ✅ Create Coordinates Object: Address: 7303 Baltimore Ave, College Park, MD, Latitude: 38.9786286, Longitude: -76.937705
@@ -142,3 +151,4 @@ Testing Empty Save Scenario:
 ❌ Invalid Address Set (empty): ValueError - Address cannot be empty.
 
 === Commute Class Test ===
+#The test results cannot be accessed at the moment because there is a problem with the tester's computer. It will be resolved as soon as possible.
