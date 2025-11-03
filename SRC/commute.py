@@ -10,11 +10,32 @@ from formatter import format_address
 
 
 class Commute:
-    """Handles distance and time calculations between 2 locations """
+    """Handles distance and time calculations between 2 locations 
+        
+        Integrates:
+        - Validator: for address validation
+        - Formatter: for address formatting
+        - Function library: for commute time and distance calculations
+
+        Example:
+        c = Commute("7303 Baltimore Ave", "Edward St. John Learning Center", "walk")
+        print(c)
+            Walk commute from '7303 Baltimore Ave' -> 'Edward St. John Learning Center': 
+                  1.2 miles, 25.6 min
+    """
 
     def __init__(self, start_address: str, end_address: str, mode: str = "walk"):
         """
         Initialize with start and end addresses, and transportation mode.
+
+            Args:
+             start_address(str): The starting address for the commute
+             end_address (str): The destination address for the commute
+             mode (str): Mode of transportation ("walk", "bike", "drive", "bus"). Default is "walk"
+
+             Raises: 
+                ValueError: If either address is invalid. 
+
         Example:
             Commute("7303 Baltimore Ave", "Edward St. John Learning Center", "walk")
         """
@@ -51,7 +72,10 @@ class Commute:
 
     @mode.setter
     def mode(self, new_mode: str):
-        """Update travel mode and recalculate time."""
+        """Update travel mode and recalculate time.
+        Args:
+            new_mode (str): The new transportation mode (UI-controlled: walk, shuttle, metro, drive).
+        """
         self._mode = new_mode.lower()
         self._time_minutes = calculate_commute_time(self._distance_miles, self._mode)
 
@@ -72,7 +96,19 @@ class Commute:
         self._time_minutes = calculate_commute_time(self._distance_miles, self._mode)
 
     def summary(self) -> dict:
-        """Return a full commute summary dictionary."""
+        """Return a full commute summary dictionary.
+        
+            Returns: dict: Contains start, end, mode, distance(miles), and time(minutes).
+
+            Example:
+               {
+                "start" : "7303 Baltimore Ave",
+                "end" : "Edward St. John Learning Center"
+                "mode" : "walk"
+                "distance_miles" : 1.2,
+                "time_minutes": 25.6
+                }
+        """
         return {
             "start": self._start_address,
             "end": self._end_address,
@@ -82,7 +118,12 @@ class Commute:
         }
 
     def __str__(self):
-        """Readable text summary for printing or debugging."""
+        """Readable text summary for printing or debugging.
+        
+            Example:
+                Walk commute from '7303 Baltimore Ave' 
+                    -> 'Edward St. John Learning Center': 1.25 miles, 24.0 min
+        """
         return (f"{self._mode.title()} commute from '{self._start_address}' -> "
                 f"'{self._end_address}': {self._distance_miles} miles, "
                 f"{self._time_minutes} min")
