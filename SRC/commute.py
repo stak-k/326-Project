@@ -45,11 +45,14 @@ class Commute:
 
         # Validate and format both addresses
 
-        if self._validator.validate_address(start_address):
-            self._start_address = format_address(start_address)
-        if self._validator.validate_address(end_address):
-            self._end_address = format_address(end_address)
-
+        if not self._validator.validate_address(start_address):
+            raise ValueError("Invalid start address.")
+        if not self._validator.validate_address(end_address):
+            raise ValueError("Invalid destination address.")
+    
+        self._start_address = format_address(start_address)
+        self._end_address = format_address(end_address)
+        
         # Calculate distance and time
         self._distance_miles = calculate_distance(self._start_address, self._end_address)
         self._time_minutes = calculate_commute_time(self._distance_miles, self._mode)
