@@ -14,7 +14,7 @@ class Room(Property):
     def type_score(self):
         return 6.5
 
-class SharedHouse(Property)
+class SharedHouse(Property):
     def rental_type(self):
         return "Shared House"
     
