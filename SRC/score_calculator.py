@@ -6,6 +6,8 @@ from function_library import (
     calculate_flexibilty_score
 )
 
+from property import Property
+
 class ScoreCalculator:
     """ 
     Calculates different category scores and combines them into and overall score
@@ -22,6 +24,9 @@ class ScoreCalculator:
             default is 1500.0
         """
         self._average_price = float(average_price)
+    
+    def property_type_score(self, property_obj: Property) -> float:
+        return property_obj.type_score()
 
     # Price Score
     def price_score(self, price: float) -> float:
