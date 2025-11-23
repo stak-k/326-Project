@@ -1,6 +1,7 @@
 # class that stores multiple properties and can store into CSV
 
 import csv
+from property import Property
 
 class PropertyManager:
     """
@@ -97,7 +98,8 @@ class PropertyManager:
         state: str,
         zipcode: str,
         rent: float,
-        score: float
+        score: float,
+        property_type: str
     ) -> dict:
         """
         Adds a property listing to the internal list.
@@ -132,11 +134,20 @@ class PropertyManager:
             "Title": clean_title.title(),
             "Address": f"{clean_address.title()}, {clean_city.title()}, {clean_state.upper()} {zipcode}",
             "Rent": rent_value,
-            "Score": score_value
+            "Score": score_value,
+            "Property Type": property_type.title()
         }
 
         self._properties.append(listing)
         return listing
+
+    def add_property_object(self, property_obj: Property):
+        if not isinstance(property_obj, Property):
+            raise TypeError("Object must be Property instance")
+        
+        listing_dict = property_obj.to_dict()
+        self._properties.append(listing_dict)
+        return listing_dict 
 
     def list_properties(self) -> list[dict]:
         """

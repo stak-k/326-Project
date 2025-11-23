@@ -5,7 +5,7 @@ class Studio(Property):
         return "Studio"
     
     def type_score(self) -> float:
-        return 9
+        return 9.0
 
 class Room(Property):
     def rental_type(self) -> str:
@@ -19,11 +19,11 @@ class SharedHouse(Property):
         return "Shared House"
     
     def type_score(self) -> float:
-        return 7
+        return 7.0
 
 class Basement(Property):
     def rental_type(self) -> str:
         return "Basement"
     
     def type_score(self) -> float:
-        return 8
+        return 8.0

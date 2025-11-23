@@ -67,7 +67,7 @@ class ScoreCalculator:
 
 
     # Overall Score
-    def overall_score(self, price: float, lease_term: int, distances: dict, property_obj = Property) -> float:
+    def overall_score(self, price: float, lease_term: int, distances: dict, property_obj: Property) -> float:
         """ Calculate overall score as weighted average of individual scores
         Args:
             price (float): Actual rent price.
