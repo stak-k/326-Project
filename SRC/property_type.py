@@ -23,7 +23,7 @@ class SharedHouse(Property):
 
 class Basement(Property):
     def rental_type(self) -> str:
-        return "Basemente"
+        return "Basement"
     
     def type_score(self) -> float:
         return 8
