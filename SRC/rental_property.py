@@ -6,6 +6,9 @@ from coordinates import Coordinates
 # Import necessary formatters
 from formatter import ( format_address, format_rent_display )
 
+from property_type import *
+from property import Property
+
 class RentalProperty:
     """Stores validated data for single property.
     
@@ -149,3 +152,35 @@ class RentalProperty:
         """
         included = "Yes" if self._utilities_included else "No"
         return f"{self._address} — {format_rent_display(self._rent)} | ZIP: {self._zipcode} | Utilities Included: {included}"
+    
+
+    def __init__(self, address, rent, zipcode, utilities_included, property_type_name, lease_term):
+
+        type_map = {
+            "Studio": Studio,
+            "1x1": OneByOne,
+            "2x1": TwoByOne,
+            "2x2": TwoByTwo,
+            "3x2": ThreeByTwo,
+            "3x3": ThreeByThree,
+            "4x2": FourByTwo,
+            "4x3": FourByThree,
+            "4x4": FourByFour,
+            "Basement": Basement,
+            "Shared House": SharedHouse
+        }
+
+        # Validate correct property type
+        if property_type_name not in type_map:
+            raise ValueError(f"Unknown property type: {property_type_name}")
+        
+        # Intiatlize the correct subclass
+        self.property_type_obj = type_map[property_type_name](
+            address,
+            rent,
+            lease_term
+        )
+
+        # Store other basic attributes
+        self.zipcode = zipcode
+        self.utilities_included = utilities_included
