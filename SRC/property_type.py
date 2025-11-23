@@ -20,3 +20,10 @@ class SharedHouse(Property):
     
     def type_score(self):
         return 7
+
+class Basement(Property):
+    def rental_type(self):
+        return "Basemente"
+    
+    def type_score(self):
+        return 8
