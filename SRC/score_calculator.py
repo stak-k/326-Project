@@ -67,7 +67,7 @@ class ScoreCalculator:
 
 
     # Overall Score
-    def overall_score(self, price: float, lease_term: int, distances: dict) -> float:
+    def overall_score(self, price: float, lease_term: int, distances: dict, property_obj = Property) -> float:
         """ Calculate overall score as weighted average of individual scores
         Args:
             price (float): Actual rent price.
@@ -79,17 +79,21 @@ class ScoreCalculator:
         price_s = self.price_score(price)
         flex_s = self.flexibility_score(lease_term)
         commute_s = self.commute_score(distances)
+        type_s = self.property_type_score(property_obj)
 
         # Weights for each score component
         weights = {
             'price': 0.5,
             'flexibility': 0.2,
-            'commute': 0.3
+            'commute': 0.3,
+            'type': 0.1
         }
 
         overall = (price_s * weights['price'] +
                    flex_s * weights['flexibility'] +
-                   commute_s * weights['commute'])
+                   commute_s * weights['commute'] +
+                   type_s * weights['type']
+                   )
         
         return overall
 
