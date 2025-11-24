@@ -21,7 +21,7 @@ class RentalProperty:
         _validator (Validator): Validator instance for data validation
     """
 
-    def __init__(self, address, rent, zipcode, utilities_included, property_type_name, lease_term):
+    def __init__(self, address, rent, zipcode, utilities_included, property_type_name, lease_term, distances: dict = None):
         """Initialize a rental property with validation and formatting
         Args:
             address (str): Full rental address.
@@ -60,6 +60,7 @@ class RentalProperty:
         type_map = {
             "Studio": Studio,
             "1x1": OneByOne,
+            "Single Apartment": SingleApartment,
             "2x1": TwoByOne,
             "2x2": TwoByTwo,
             "3x2": ThreeByTwo,
@@ -82,6 +83,8 @@ class RentalProperty:
             lease_term
         )
 
+        self.lease_term = lease_term
+        self.distances = distances if distances is not None else {}
 
     # Address Getter
     @property
@@ -179,4 +182,18 @@ class RentalProperty:
         included = "Yes" if self._utilities_included else "No"
         return f"{self._address} — {format_rent_display(self._rent)} | ZIP: {self._zipcode} | Utilities Included: {included}"
     
+
+
+    def to_dict(self):
+        """Return full property info for saving/export."""
+        return {
+            "Address": self.address,
+            "Rent": self.rent,
+            "ZIP": self.zipcode,
+            "Utilities Included": self.utilities_included,
+            "Lease Term": self.lease_term,
+            "Property Type": self.property_type_obj.rental_type(),
+            "Type Score": self.property_type_obj.type_score(),
+            "Distances": self.distances
+        }
     
