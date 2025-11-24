@@ -23,6 +23,7 @@ class OneByOne(Property):
     and is not shared. Therefore receive the Best property type score.
     """
     def rental_type(self) -> str:
+        """Return the type of rental as a descriptive string."""
         return "One Bed + One Bath"
     
     def __init__(self, address, price, lease_term):
@@ -40,6 +41,7 @@ class TwoByOne(Property):
     and is shared. Decrease few points for shared bathroom.
     """
     def rental_type(self) -> str:
+        """Return the type of rental as a descriptive string."""
         return "Two Bed + One Bath"
     
     def __init__(self, address, price, lease_term):
@@ -56,6 +58,7 @@ class TwoByTwo(Property):
     and is shared. Increase 1 point compared to Two by One for additional bathroom.
     """
     def rental_type(self) -> str:
+        """Return the type of rental as a descriptive string."""
         return "Two Bed + Two Bath"
     
     def __init__(self, address, price, lease_term):
@@ -72,12 +75,15 @@ class ThreeByTwo(Property):
     Slightly lower overall desirability for students.
     """
     def rental_type(self) -> str:
+        """Return the type of rental as a descriptive string."""
         return "Three Bed + Two Bath"
     
     def __init__(self, address, price, lease_term):
+        """Initialize the subclass by calling the parent class constructor with address, price, and lease term."""
         super().__init__(address, price, lease_term)
     
     def type_score(self) -> float:
+        """Return the rental's type score as a float."""
         return 6
 
 
@@ -87,12 +93,15 @@ class ThreeByThree(Property):
     Higher score than 3x2.
     """
     def rental_type(self) -> str:
+        """Return the specific rental type label for this unit."""
         return "Three Bed + Three Bath"
     
     def __init__(self, address, price, lease_term):
+        """Initialize with address, monthly price, and lease duration."""
         super().__init__(address, price, lease_term)
     
     def type_score(self) -> float:
+           """Return this property's fixed type score."""
         return 7
 
 
@@ -101,12 +110,15 @@ class FourByTwo(Property):
     High roommate count + shared bathrooms = lower score.
     """
     def rental_type(self) -> str:
+         """Return the rental's type label."""
         return "Four Bed + Two Bath"
     
     def __init__(self, address, price, lease_term):
+        """Initialize the rental by forwarding core attributes to the base class."""
         super().__init__(address, price, lease_term)
     
     def type_score(self) -> float:
+        """Return the numeric score for this rental type."""
         return 4
 
 
@@ -115,12 +127,15 @@ class FourByThree(Property):
     Slightly better than 4x2 due to reduced bathroom sharing.
     """
     def rental_type(self) -> str:
+         """Return the rental’s type description."""
         return "Four Bed + Three Bath"
     
     def __init__(self, address, price, lease_term):
+        """Initialize the rental with its address, price, and lease term."""
         super().__init__(address, price, lease_term)
     
     def type_score(self) -> float:
+        """Return the numeric score representing this rental type."""
         return 5.5
 
 
@@ -130,28 +145,35 @@ class FourByFour(Property):
     Better privacy but still lots of roommates.
     """
     def rental_type(self) -> str:
+        """Return the descriptive label for this rental type."""
         return "Four Bed + Four Bath"
     
     def __init__(self, address, price, lease_term):
+         """Initialize the rental by forwarding core attributes to the base class."""
         super().__init__(address, price, lease_term)
     
     def type_score(self) -> float:
+        """Returns the numeric score representing this rental’s type (6)."""
         return 6
 
 
 
 class SharedHouse(Property):
     def rental_type(self) -> str:
+        """Returns the string label for this rental type ('Shared House')."""
         return "Shared House"
     
     def type_score(self) -> float:
+        """Returns the numerical score representing this rental type (7.0)."""
         return 7.0
 
 class Basement(Property):
     def rental_type(self) -> str:
+        """Returns the rental type label 'Basement'."""
         return "Basement"
     
     def type_score(self) -> float:
+        """Returns an 8.5 desirability score for this rental type."""
         return 8.5
     
 
@@ -164,4 +186,5 @@ class SingleApartment(Property):
         super().__init__(address, price, lease_term)
     
     def type_score(self) -> float:
+        """Numeric score representing this unit type’s desirability."""
         return 10
