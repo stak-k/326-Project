@@ -141,13 +141,26 @@ class PropertyManager:
         self._properties.append(listing)
         return listing
 
-    def add_property_object(self, property_obj: Property):
-        if not isinstance(property_obj, Property):
-            raise TypeError("Object must be Property instance")
+    def add_property_object(self, property_obj):
         
-        listing_dict = property_obj.to_dict()
-        self._properties.append(listing_dict)
-        return listing_dict 
+        """
+        Accepts a Property subclass OR a RentalProperty containing one.
+        """
+        from rental_property import RentalProperty
+        
+        # Case 1: RentalProperty
+        if hasattr(property_obj, "property_type_obj"):
+            listing_dict = property_obj.property_type_obj.to_dict()
+            self._properties.append(listing_dict)
+            return listing_dict
+
+        # Case 2: Raw Property subclass
+        if isinstance(property_obj, Property):
+            listing_dict = property_obj.to_dict()
+            self._properties.append(listing_dict)
+            return listing_dict
+        
+        raise TypeError("Object must be a Property or RentalProperty instance")
 
     def list_properties(self) -> list[dict]:
         """
@@ -208,3 +221,29 @@ class PropertyManager:
         """
         count = len(self._properties)
         return f"PropertyManager({count} listings stored)"
+    
+
+    def add_rental(self, rental, score: float) -> dict:
+        """
+        Stores a RentalProperty object along with its computed overall score.
+        """
+        from rental_property import RentalProperty
+
+        if not isinstance(rental, RentalProperty):
+            raise TypeError("rental must be a RentalProperty instance")
+
+        score_value = self._validate_score(score)
+
+        listing = {
+            "Address": rental.address,
+            "Rent": rental.rent,
+            "ZIP": rental.zipcode,
+            "Utilities Included": rental.utilities_included,
+            "Lease Term": rental.lease_term,
+            "Property Type": rental.property_type_obj.rental_type(),
+            "Type Score": rental.property_type_obj.type_score(),
+            "Overall Score": score_value,
+        }
+
+        self._properties.append(listing)
+        return listing
