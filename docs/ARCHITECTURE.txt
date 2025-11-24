@@ -1,0 +1,142 @@
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                             ABSTRACT / BASE LAYER                            │
+│                       (Defines Core Data + Shared Behavior)                  │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌────────────────────────────────────┐                                      │
+│  │            Property                │                                      │
+│  ├────────────────────────────────────┤                                      │
+│  │ + address                          │                                      │
+│  │ + rent                             │                                      │
+│  │ + zipcode                          │                                      │
+│  │ + utilities_included               │                                      │
+│  │                                    │                                      │
+│  │ + to_dict()                        │                                      │
+│  │ + type_score() (overridden later)  │                                      │
+│  │ + rental_type() (overridden later) │                                      │
+│  └────────────────────────────────────┘                                      │
+│                   ▲                                                         │
+│                   │ inherits                                                │
+└────────────────────┼──────────────────────────────────────────────────────────┘
+                     │
+┌────────────────────┼──────────────────────────────────────────────────────────┐
+│                     CONCRETE PROPERTY TYPES (Inheritance)                     │
+│                       (Specialized Behavior + Polymorphism)                   │
+├────────────────────┴──────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌──────────────────┐   ┌──────────────────┐   ┌──────────────────────────┐ │
+│  │    TwoByOne      │   │    TwoByTwo      │   │        Basement          │ │
+│  ├──────────────────┤   ├──────────────────┤   ├──────────────────────────┤ │
+│  │ rental_type()    │   │ rental_type()    │   │ rental_type()            │ │
+│  │ → "2 Bed 1 Bath" │   │ → "2 Bed 2 Bath" │   │ → "Basement"             │ │
+│  │ type_score()     │   │ type_score()     │   │ type_score()             │ │
+│  │ → 6              │   │ → 8              │   │ → 8.5                    │ │
+│  └──────────────────┘   └──────────────────┘   └──────────────────────────┘ │
+│                                                                              │
+│  ┌──────────────────┐   ┌──────────────────┐   ┌──────────────────────────┐ │
+│  │    ThreeByTwo    │   │   FourByFour     │   │      SharedHouse         │ │
+│  ├──────────────────┤   ├──────────────────┤   ├──────────────────────────┤ │
+│  │ rental_type()    │   │ rental_type()    │   │ rental_type()            │ │
+│  │ type_score()     │   │ type_score()     │   │ type_score()             │ │
+│  │ various scores   │   │ various scores   │   │ → 7                      │ │
+│  └──────────────────┘   └──────────────────┘   └──────────────────────────┘ │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+                                      │
+                                      │ used by
+                                      ▼
+┌──────────────────────────────────────────────────────────────────────────────┐
+│                       COMPOSITION LAYER (System Engine)                      │
+│                           *Objects containing objects*                        │
+├──────────────────────────────────────────────────────────────────────────────┤
+│                                                                              │
+│  ┌───────────────────────────────────────────────────────┐                  │
+│  │                   RentalProperty                       │                  │
+│  ├───────────────────────────────────────────────────────┤                  │
+│  │ + address                                             │                  │
+│  │ + rent                                                │                  │
+│  │ + zipcode                                             │                  │
+│  │ + utilities_included                                  │                  │
+│  │ + lease_term                                          │                  │
+│  │ + distances {drive, walk}                             │                  │
+│  │                                                       │                  │
+│  │ + property_type_obj  ◄──── HAS-A PropertyType class   │                  │
+│  │ + coordinates       ◄──── HAS-A Coordinates object    │                  │
+│  └───────────────────────────────────────────────────────┘                  │
+│                                                                              │
+│                                                                              │
+│  ┌───────────────────────────────────────────────────────┐                  │
+│  │                  ScoreCalculator                       │                  │
+│  ├───────────────────────────────────────────────────────┤                  │
+│  │ + price_score()                                       │                  │
+│  │ + flexibility_score()                                 │                  │
+│  │ + commute_score()                                     │                  │
+│  │ + overall_score(rental)  ◄── polymorphic type_score() │                  │
+│  └───────────────────────────────────────────────────────┘                  │
+│                                                                              │
+│  ┌───────────────────────────────────────────────────────┐                  │
+│  │                   PropertyManager                      │                  │
+│  ├───────────────────────────────────────────────────────┤                  │
+│  │ + properties []  ◄──────────── HAS-MANY rentals       │                  │
+│  │ + add_property_object()                               │                  │
+│  │ + add_rental()                                        │                  │
+│  │ + save_to_csv() / load_from_csv()                     │                  │
+│  └───────────────────────────────────────────────────────┘                  │
+│                                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+
+Key Relationships
+INHERITANCE (is-a)
+- TwoByOne IS-A Property
+- TwoByTwo IS-A Property
+- ThreeByTwo IS-A Property
+- FourByFour IS-A Property
+- Basement IS-A Property
+- SharedHouse IS-A Property
+
+COMPOSITION (has-a / contains)
+- RentalProperty HAS-A PropertyType subclass
+- RentalProperty HAS-A Coordinates object
+- PropertyManager HAS-MANY stored listings
+- ScoreCalculator USES RentalProperty
+
+POLYMORPHISM
+- Each property subclass overrides:
+- rental_type()
+- type_score()
+
+
+
+1. User creates a RentalProperty
+   -> RentalProperty builds PropertyType object internally via composition
+
+2. User passes RentalProperty to ScoreCalculator
+    -> SC reads rent, lease term, commute, utilities
+    -> Calls polymorphic property_type_obj.type_score()
+
+3. ScoreCalculator returns overall score
+
+4. PropertyManager.add_rental() saves rental + score as dict
+   -> Stored for CSV export and display
+
+
+
+Why This Architecture Works
+Abstract Layer Benefits
+
+✓ One shared parent class (Property)
+✓ Guarantees consistent structure across all property types
+✓ Subclasses only override what they need (type + score behavior)
+
+Concrete Layer Benefits
+
+✓ Each property type defines its unique scoring behavior
+✓ Polymorphism allows a single scoring function to work for any property
+✓ Easy to add new types
+
+Composition Layer Benefits
+
+✓ RentalProperty bundles many real-world components (coordinates, property type, commute distances)
+✓ ScoreCalculator operates on clean, structured data
+✓ PropertyManager controls storage/export workflow
