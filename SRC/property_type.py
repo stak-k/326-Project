@@ -31,7 +31,7 @@ class OneByOne(Property):
     
     def type_score(self) -> float:
         """Return type score for a One Bed + One Bath"""
-        return 10
+        return 10.0
     
 
 class TwoByOne(Property):
@@ -48,7 +48,7 @@ class TwoByOne(Property):
     
     def type_score(self) -> float:
         """Return type score for a Two Bed + One Bath"""
-        return 7
+        return 7.0
     
 class TwoByTwo(Property):
     """Represents a Two bed, Two Bath (Shared Apartment)
@@ -64,7 +64,7 @@ class TwoByTwo(Property):
     
     def type_score(self) -> float:
         """Return type score for a Two Bed + Two Bath"""
-        return 8
+        return 8.0
     
 class ThreeByTwo(Property):
     """3 Bed + 2 Bath (Shared Apartment)
@@ -78,7 +78,7 @@ class ThreeByTwo(Property):
         super().__init__(address, price, lease_term)
     
     def type_score(self) -> float:
-        return 6
+        return 6.0
 
 
 class ThreeByThree(Property):
@@ -93,7 +93,7 @@ class ThreeByThree(Property):
         super().__init__(address, price, lease_term)
     
     def type_score(self) -> float:
-        return 7
+        return 7.0
 
 
 class FourByTwo(Property):
@@ -107,7 +107,7 @@ class FourByTwo(Property):
         super().__init__(address, price, lease_term)
     
     def type_score(self) -> float:
-        return 4
+        return 4.0
 
 
 class FourByThree(Property):
@@ -136,7 +136,7 @@ class FourByFour(Property):
         super().__init__(address, price, lease_term)
     
     def type_score(self) -> float:
-        return 6
+        return 6.0
 
 
 
@@ -164,4 +164,4 @@ class SingleApartment(Property):
         super().__init__(address, price, lease_term)
     
     def type_score(self) -> float:
-        return 10
+        return 10.0
