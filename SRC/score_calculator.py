@@ -73,11 +73,6 @@ class ScoreCalculator:
         """
         return calculate_commute_score(distances)
     
-    # Covenience Score
-
-    # Crime Score
-
-    
 
     # NEW: clean, object-driven overall score uses composition + inheritance + polymorphism
     def overall_score(self, rental: RentalProperty) -> float:
