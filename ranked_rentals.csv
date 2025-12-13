@@ -1,0 +1,4 @@
+Address,Rent,ZIP,Utilities Included,Lease Term,Property Type,Type Score,Overall Score
+"7303 Baltimore Ave, College Park, MD",1500.0,20740,True,12,Four Bed + Four Bath,6.0,4.98
+"4500 Knox Rd, College Park, MD",1350.0,20742,False,6,Studio,9.0,6.52
+"8500 Paint Branch Dr, College Park, MD",1700.0,20740,True,12,Two Bed + Two Bath,8.0,4.37
