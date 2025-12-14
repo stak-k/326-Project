@@ -1,7 +1,7 @@
 # DEMONSTRATION
 * The demo scripts are located in the example file.*
   
-This document demonstrates how to use and how to use and test the functions in the ** Rental Hunters Function Library **.
+This document demonstrates how to use and how to use and test the functions/classes in the ** Rental Hunters Project **.
 
 Each example below shows expected outputs and common error cases.
 
