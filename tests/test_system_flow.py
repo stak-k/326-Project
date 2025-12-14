@@ -5,6 +5,7 @@ Includes:
 - Integration Test: class to class interactions
 - I/O Test: file read/write operations
 """
+import csv
 import unittest
 import os
 import sys
@@ -171,6 +172,41 @@ class TestSystemWorkflow(unittest.TestCase):
         self.assertGreater(len(loaded), 0)
         self.assertIn("Overall Score", loaded[0])
         self.assertIn("Address", loaded[0])
+    
+    def test_system_import_rejects_invalid_score(self):
+        """
+        System / I-O Test:
+        Verifies that corrupted CSV data (non-numeric score)
+        is rejected during import.
+        """
+
+        # Arrange: create a corrupted CSV manually
+        with open(self.test_file, "w", newline="", encoding="utf-8") as file:
+            writer = csv.writer(file)
+            writer.writerow([
+                "Address",
+                "Rent",
+                "ZIP",
+                "Utilities Included",
+                "Lease Term",
+                "Property Type",
+                "Type Score",
+                "Overall Score"
+            ])
+            writer.writerow([
+                "123 Main St",
+                "1500",
+                "20740",
+                "True",
+                "12",
+                "2x2",
+                "8",
+                "TEN"  # invalid score
+            ])
+
+        # Act & Assert
+        with self.assertRaises(ValueError):
+            self.manager.load_from_csv(self.test_file)
     
     def test_system_ranking_persists_in_export(self):
         """
