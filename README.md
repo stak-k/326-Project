@@ -40,6 +40,7 @@ Rental Hunters provides a Python-based system that:
   **“Which rental is the best option?”**
 
 # File Structure
+``` css
 .
 ├── src/
 │   ├── function_library.py
@@ -70,6 +71,7 @@ Rental Hunters provides a Python-based system that:
 │
 ├── requirements.txt
 └── README.md
+``` 
 
 # System Architecture
 The system follows a modular, object-oriented architecture using:
