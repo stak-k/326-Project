@@ -3,6 +3,7 @@
 from pathlib import Path
 import csv
 from property import Property
+from rental_property import RentalProperty
 
 class PropertyManager:
     """
@@ -194,6 +195,9 @@ class PropertyManager:
             writer.writeheader()
             writer.writerows(self._properties)
 
+
+
+
     def load_from_csv(self, filename: str = "properties.csv") -> list[dict]:
         """
         Loads property listings from a CSV file.
@@ -205,6 +209,7 @@ class PropertyManager:
             list[dict]: List of loaded property dictionaries.
         """
         file_path = Path(filename)
+
         if not file_path.exists():
             raise ValueError(f"CSV file not found: {filename}")
 
@@ -214,14 +219,23 @@ class PropertyManager:
             if not reader.fieldnames:
                 raise ValueError("CSV file is empty or corrupted.")
 
-            self._properties = list(reader)
+            loaded_properties = []
 
         # --- minimal validation (NEW) ---
         for row in self._properties:
-            if "Overall Score" in row:
-                float(row["Overall Score"])  # raises ValueError if invalid
+            try:
+                rental = RentalProperty.from_dict(row)
+                loaded_properties.append(rental)
+            except Exception as e:
+                # Skip bad rows but continue laoding others
+                print(f"Skipping invalid row: {e}")
 
+        self._properties = loaded_properties
         return self._properties
+    
+
+
+
 
     # ----------
     # Display and representation
