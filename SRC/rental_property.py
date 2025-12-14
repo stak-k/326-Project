@@ -200,3 +200,38 @@ class RentalProperty:
             "Distances": str(self.distances)  # CSV-safe
         }
     
+
+    @classmethod
+    def from_dict(cls, data: dict):
+        """
+        Reconstruct a RentalProperty object from saved CSV data.
+        Used when loading persisted data from disk.
+        """
+
+
+        # Parse distances safely
+        # Distances come back as a string from CSV
+        distances = {}
+        if "Distances" in data and data["Distances"]:
+            try:
+                # Convert string back into dictionary
+                distances = eval(data["Distances"])
+            except Exception:
+                # If parsing fails, default to empty distances
+                distances = {}
+
+
+        # -----------------------------
+        # Recreate RentalProperty object
+        # -----------------------------
+        # All values are explicitly cast to the correct type to ensure validation and consistency.
+        return cls(
+            address=data["Address"],
+            rent=float(data["Rent"]),
+            zipcode=int(data["ZIP"]),
+            utilities_included=data["Utilities Included"] in [True, "True", "true", "1"],
+            property_type_name=data["Property Type"],
+            lease_term=int(data["Lease Term"]),
+            distances=distances
+        )
+
