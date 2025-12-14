@@ -1,4 +1,4 @@
-# Usage Examples
+# DEMONSTRATION
 
 This document demonstrates how to use and how to use and test the functions in the ** Rental Hunters Function Library **.
 
