@@ -54,7 +54,8 @@ python3 examples/demo_script.py
 # Usage examples for key functions
 
 Usage Examples
-Creating Rental Properties
+# Creating Rental Properties
+``` python
 from rental_property import RentalProperty
 
 # 1. Create rental properties
@@ -77,8 +78,10 @@ rental2 = RentalProperty(
     lease_term=6,
     distances={"drive": 5, "walk": 15}
 )
+```
 
-Creating Score Rental
+# Creating Score Rental
+``` python
 from score_calculator import ScoreCalculator
 
 # 2. Score rentals
@@ -89,8 +92,10 @@ score2 = calculator.overall_score(rental2)
 print("Scores:")
 print(rental1.address, score1)
 print(rental2.address, score2)
+```
 
-Manage listings
+# Manage listings
+``` python
 from listing_manager import PropertyManager
 
 # 3. Manage listings
@@ -107,7 +112,7 @@ for r in ranked:
 # 5. Save results
 manager.save_to_csv("ranked_rentals.csv")
 print("\nResults saved to ranked_rentals.csv")
-
+```
 # Function library overview and organization
 
 - `src/function_library.py`: Main file containing all 15 functions (Simple, Medium, and Complex).
