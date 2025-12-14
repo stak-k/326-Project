@@ -150,6 +150,69 @@ class TestSystemWorkflow(unittest.TestCase):
 
         best = self.manager.list_properties()[0]
         self.assertIn("Overall Score", best)
+    
+    def test_system_load_restores_saved_state(self):
+        """
+        System Test:
+        Verifies that saved program state can be restored
+        in a new session using CSV persistence.
+        """
+
+        # Arrange: score and save rental
+        score = self.calculator.overall_score(self.rental)
+        self.manager.add_rental(self.rental, score)
+        self.manager.save_to_csv(self.test_file)
+
+        # Act: simulate a new session
+        new_manager = PropertyManager()
+        loaded = new_manager.load_from_csv(self.test_file)
+
+        # Assert: state restored correctly
+        self.assertGreater(len(loaded), 0)
+        self.assertIn("Overall Score", loaded[0])
+        self.assertIn("Address", loaded[0])
+    
+    def test_system_ranking_persists_in_export(self):
+        """
+        System Test:
+        Verifies that rental ranking answers the charter question
+        and persists correctly in exported CSV.
+        """
+
+        # Arrange: create a second rental with worse score
+        rental_worse = RentalProperty(
+            address="4500 Knox Rd, College Park, MD",
+            rent=1900,  # higher rent → worse score
+            zipcode=20740,
+            utilities_included=False,
+            property_type_name="4x4",
+            lease_term=6,
+            distances={"drive": 20}
+        )
+
+        score_best = self.calculator.overall_score(self.rental)
+        score_worse = self.calculator.overall_score(rental_worse)
+
+        self.manager.add_rental(self.rental, score_best)
+        self.manager.add_rental(rental_worse, score_worse)
+
+        # Sort like main workflow
+        ranked = self.manager.list_properties()
+        ranked.sort(key=lambda r: r["Overall Score"], reverse=True)
+
+        # Save ranked results
+        self.manager.save_to_csv(self.test_file)
+
+        # Act: read file
+        with open(self.test_file, "r") as f:
+            lines = f.readlines()
+
+        # Assert:
+        # header + at least one data row
+        self.assertGreater(len(lines), 1)
+
+        # Best rental should be first after header
+        self.assertIn(self.rental.address.split(",")[0], lines[1])
 
     def tearDown(self):
         if os.path.exists(self.test_file):
