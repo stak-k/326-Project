@@ -1,4 +1,18 @@
-# Calculates distance (miles) and estimated commute time between two addresses
+#  This class is responsible for calculating the distance and estimated
+# commute time between two addresses.
+#
+# It acts as a connector between:
+# - Validator: to make sure addresses are valid
+# - Formatter: to normalize address formatting
+# - Function library: to calculate distance and travel time
+#
+# The goal of this class is to keep commute logic separate from
+# rental data and scoring logic, making the system modular and easier
+# to test and maintain.
+#
+# This class is used by RentalProperty and ScoreCalculator to include
+# commute convenience as part of the overall rental score.
+
 
 from function_library import (
     calculate_commute_time, 
@@ -8,7 +22,7 @@ from coordinates import Coordinates
 from validator import Validator
 from formatter import format_address
 
-
+# 
 class Commute:
     """Handles distance and time calculations between 2 locations 
         
@@ -24,6 +38,7 @@ class Commute:
                   1.2 miles, 25.6 min
     """
 
+## Distance is calculated once, time depends on transportation mode
     def __init__(self, start_address: str, end_address: str, mode: str = "walk"):
         """
         Initialize with start and end addresses, and transportation mode.
