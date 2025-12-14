@@ -79,7 +79,7 @@ rental2 = RentalProperty(
 )
 ```
 
-# Creating Score Rental
+## Creating Score Rental
 ``` python
 from score_calculator import ScoreCalculator
 
@@ -93,7 +93,7 @@ print(rental1.address, score1)
 print(rental2.address, score2)
 ```
 
-# Manage listings
+## Manage listings
 ``` python
 from listing_manager import PropertyManager
 
