@@ -53,7 +53,6 @@ python3 examples/demo_script.py
 
 # Usage examples for key functions
 
-Usage Examples
 # Creating Rental Properties
 ``` python
 from rental_property import RentalProperty
