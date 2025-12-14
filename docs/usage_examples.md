@@ -1,3 +1,4 @@
+``` python 
 from rental_property import RentalProperty
 from score_calculator import ScoreCalculator
 from listing_manager import PropertyManager
@@ -46,3 +47,4 @@ for r in ranked:
 # 5. Save results
 manager.save_to_csv("ranked_rentals.csv")
 print("\nResults saved to ranked_rentals.csv")
+```
