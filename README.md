@@ -92,6 +92,18 @@ Features include:
     - Graceful error handling for missing or malformed files
 
 # Testin Strategy
+This project includes a comprehensive testing suite using Python’s `unittest`
+framework.
+
+Tests include:
+    - Unit tests for isolated logic
+    - Integration tests for class coordination
+    - System tests for complete end-to-end workflows
+    - I/O tests for CSV persistence and validation
+
+All tests pass at submission.
+
+See `docs/testing_strategy.md` for full testing documentation.
 
 # Installation & Setup
 
