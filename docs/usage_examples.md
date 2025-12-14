@@ -1,4 +1,4 @@
-from rental_property import RentalProperty \n
+from rental_property import RentalProperty
 from score_calculator import ScoreCalculator
 from listing_manager import PropertyManager
 
