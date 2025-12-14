@@ -1,4 +1,13 @@
-#  This class is responsible for calculating the distance and estimated
+
+from function_library import (
+    calculate_commute_time, 
+    calculate_distance
+)
+from coordinates import Coordinates
+from validator import Validator
+from formatter import format_address
+
+# #  This class is responsible for calculating the distance and estimated
 # commute time between two addresses.
 #
 # It acts as a connector between:
@@ -12,17 +21,6 @@
 #
 # This class is used by RentalProperty and ScoreCalculator to include
 # commute convenience as part of the overall rental score.
-
-
-from function_library import (
-    calculate_commute_time, 
-    calculate_distance
-)
-from coordinates import Coordinates
-from validator import Validator
-from formatter import format_address
-
-# 
 class Commute:
     """Handles distance and time calculations between 2 locations 
         
