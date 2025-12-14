@@ -1,5 +1,6 @@
 # class that stores multiple properties and can store into CSV
 
+from pathlib import Path
 import csv
 from property import Property
 
@@ -203,9 +204,23 @@ class PropertyManager:
         Returns:
             list[dict]: List of loaded property dictionaries.
         """
-        with open(filename, newline="", encoding="utf-8") as file:
+        file_path = Path(filename)
+        if not file_path.exists():
+            raise ValueError(f"CSV file not found: {filename}")
+
+        with file_path.open(newline="", encoding="utf-8") as file:
             reader = csv.DictReader(file)
+
+            if not reader.fieldnames:
+                raise ValueError("CSV file is empty or corrupted.")
+
             self._properties = list(reader)
+
+        # --- minimal validation (NEW) ---
+        for row in self._properties:
+            if "Overall Score" in row:
+                float(row["Overall Score"])  # raises ValueError if invalid
+
         return self._properties
 
     # ----------
