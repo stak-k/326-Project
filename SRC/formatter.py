@@ -1,5 +1,7 @@
-#Import functions from the function_library file so this class can use them 
-# handle text formatting and summary creation.
+# Import formatting helper functions from function_library.
+# This class acts as a wrapper around these functions so formatting
+# logic is centralized and reusable across the system.
+
 from function_library import(
      format_address,
      format_rent_display,
@@ -28,7 +30,7 @@ class Formatter:
             Raises:
                 ValueError: If inputs are empty or not strings.    
         """
-        # Make sure both inputs are text and not empty.
+        # Validate configuration inputs to avoid formatting errors later.
         if not isinstance(currency_symbol, str) or not currency_symbol.strip():
             raise ValueError("Currency symbol must be a non-empty string.")
         if not isinstance(default_lease_term, str) or not default_lease_term.strip():
@@ -39,7 +41,9 @@ class Formatter:
         self._default_lease_term = default_lease_term.strip()
 
 
-    #Address Formating
+# -----------------
+# Address Formatting
+# -----------------
      def format_address(self, address: str) -> str:
         """
         Use the function from function_library to clean and format an address.
@@ -58,13 +62,15 @@ class Formatter:
         """
         return format_address(address)
 
-    #Listing Title Formatting (new)
+# -----------------
+# Listing Title Formatting
+# -----------------
      def format_listing_title(self,title: str) -> str:
          """ 
          Formats the rental title so it looks clean and properly capitalized.
 
          Args:
-            title (str): The title of the property.
+            title (str): Raw title entered by the user.
         
          Returns:
             str: Cleaned and formatted title.
@@ -76,7 +82,9 @@ class Formatter:
          """
          return format_listing_title(title)
              
-    #Rent Display Formatting
+# -----------------
+# Rent Display Formatting
+# -----------------
 
      def format_rent_display(self, price: float, lease_term:str | None = None) -> str:
         """
@@ -102,7 +110,9 @@ class Formatter:
         )
      
 
-    #Summary Listing
+# -----------------
+# Listing Summary Formatting
+# -----------------
      def generate_listing_summary(self, title: str, price: float, address: str, score: float, lease_term: str | None = None,) -> str:
         """
         Creates a single summary line showing the most important info.
@@ -131,7 +141,9 @@ class Formatter:
         )
      
 
-     #Settings
+# -----------------
+# Formatter Settings
+# -----------------
      @property
      def settings(self) -> dict:
          """
@@ -150,7 +162,9 @@ class Formatter:
             "default_lease_term": self._default_lease_term
         }
      
-     #String Representation
+# -----------------
+# Debugging Support
+# -----------------
      def __str__(self) -> str:
         """
         Returns a readable summary of the formatter settings.
