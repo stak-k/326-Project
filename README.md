@@ -105,14 +105,14 @@ All tests pass at submission.
 See `docs/testing_strategy.md` for full testing documentation.
 
 # Running Tests
-# Running Tests
+
 
 This project includes unit, integration, and system tests written using
 Python’s built-in `unittest` framework.
 
 To run the full test suite from the project root directory:
 
-``` python 
+``` bash
 python -m unittest discover tests
 ```
 
@@ -129,7 +129,7 @@ cd 326-Project
 ```
 
 ### Step 2: (Optional) Create a Virtual Environment 
-``` python
+``` bash
 python3 -m venv venv
 source venv/bin/activate      # macOS/Linux  
 venv\Scripts\activate         # Windows
@@ -138,7 +138,7 @@ venv\Scripts\activate         # Windows
 ### Step 3:  Install required packages
 All required packages are listed in requirements.txt 
 You can install it manually:
-``` python
+``` bash
 pip install -r requirements.txt
 ```
 
@@ -149,7 +149,7 @@ The `examples/` directory contains multiple demo scripts, each serving
 a specific purpose.
 
 ### Primary System Demo (Recommended)
-```python
+```bash
 python examples/demo_project_3.py
 ```
 
@@ -214,16 +214,23 @@ for r in ranked:
 manager.save_to_csv("ranked_rentals.csv")
 print("\nResults saved to ranked_rentals.csv")
 ```
+# Video presentation
+A 5–10 minute project presentation video can be found here:
+
+[ INSERT VIDEO LINK ]
 
 # Contribution guidelines for team members
     Serra Tak 
-        - Created and tested multiple validation and formatting functions
-        - Organized project structure and folder setup
-        - Researched and prepared documentation sources such as CSV datasets
-        - Conducted testing, debugging, and documentation cleanup
+        - Created and tested validation and formatting functions
+        - Contributed to methods and CSV persistence logic
+        - Implemented and expanded system-level tests
+        - Organized the project structure and folder layout
+        - Led testing, debugging, and documentation cleanup
+    
     Nicholas Stroble
         - Contributed to docstring documentation and initial setup
         - Collaborated on designing and setting up a database structure for existing rental properties.
+    
     Bryan Sturgis
         - Created the wireframe design for the user interface and visual layout
         - Implemented medium, complex, and advanced functions, including geolocation and scoring logic.
