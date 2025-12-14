@@ -8,6 +8,7 @@ from formatter import ( format_address, format_rent_display )
 
 from property_type import *
 from property import Property
+import json
 
 class RentalProperty:
     """Stores validated data for single property.
@@ -197,7 +198,7 @@ class RentalProperty:
             "Lease Term": self.lease_term,
             "Property Type": self.property_type_obj.rental_type(),
             "Type Score": self.property_type_obj.type_score(),
-            "Distances": str(self.distances)  # CSV-safe
+            "Distances": json.dumps(self.distances)
         }
     
 
@@ -209,14 +210,12 @@ class RentalProperty:
         """
 
 
-        # Parse distances safely
-        # Distances come back as a string from CSV
+        # Convert JSON string back into a dictionary
         distances = {}
         if "Distances" in data and data["Distances"]:
             try:
-                # Convert string back into dictionary
-                distances = eval(data["Distances"])
-            except Exception:
+                distances = json.loads(data["Distances"])
+            except json.JSONDecodeError:
                 # If parsing fails, default to empty distances
                 distances = {}
 
@@ -229,7 +228,7 @@ class RentalProperty:
             address=data["Address"],
             rent=float(data["Rent"]),
             zipcode=int(data["ZIP"]),
-            utilities_included=data["Utilities Included"] in [True, "True", "true", "1"],
+            utilities_included=str(data["Utilities Included"]).lower() in ["true", "1", "yes"],
             property_type_name=data["Property Type"],
             lease_term=int(data["Lease Term"]),
             distances=distances
