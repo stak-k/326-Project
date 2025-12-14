@@ -152,6 +152,12 @@ a specific purpose.
 ```bash
 python examples/demo_project_3.py
 ```
+### Additional Demos
+
+```bash
+python examples/demo_script.py
+python examples/demo_script_classes.py
+
 
 # Usage examples for key functions
 
