@@ -1,7 +1,8 @@
-``` python 
+# Usage examples for key functions
+
+## Creating Rental Properties
+``` python
 from rental_property import RentalProperty
-from score_calculator import ScoreCalculator
-from listing_manager import PropertyManager
 
 # 1. Create rental properties
 rental1 = RentalProperty(
@@ -23,6 +24,11 @@ rental2 = RentalProperty(
     lease_term=6,
     distances={"drive": 5, "walk": 15}
 )
+```
+
+## Creating Score Rental
+``` python
+from score_calculator import ScoreCalculator
 
 # 2. Score rentals
 calculator = ScoreCalculator()
@@ -32,6 +38,11 @@ score2 = calculator.overall_score(rental2)
 print("Scores:")
 print(rental1.address, score1)
 print(rental2.address, score2)
+```
+
+## Manage listings
+``` python
+from listing_manager import PropertyManager
 
 # 3. Manage listings
 manager = PropertyManager()
