@@ -1,24 +1,101 @@
-# Project Description
+# Rental Hunters - INST326 Project
 
-Rental Hunters is a Python-based function library created to analyze Rental Hunters is a student-focused housing analysis system that helps University of Maryland students find the best rental options near campus.
-The system evaluates properties based on price fairness, commute convenience, safety, lease flexibility, and access to nearby amenities — producing an overall “Best Value Score” for each rental.
+Rental Hunters is a **student-focused housing analysis system** designed to help
+University of Maryland (UMD) students identify the best off-campus rental options
+near campus.
 
+This project serves as the **Project 4 Capstone** for INST326 and integrates
+validation, scoring logic, data persistence, and comprehensive testing into
+a complete, functional system.
+
+The system evaluates rentals based on:
+- Price fairness
+- Commute convenience
+- Lease flexibility
+- Property type desirability
+
+Each rental receives an overall **Best Value Score**, allowing students to
+compare and rank housing options objectively.
 
 # Team Members:
-    Serra Tak 
-    Nicholas Stroble
-    Bryan Sturgis
+   - Bryan Sturgis
+   - Serra Tak 
+   - Nicholas Stroble
+    
 
 
 # Domain Focus and Problem Statement
 
-Domain: Off-Campus Student Housing Analysis
+### Domain
+Off-Campus Student Housing Analysis
 
-Problem: UMD students often struggle to find rentals that balance affordability, safety, and convenience.
+### Problem
+UMD students often struggle to find rentals that balance affordability, safety, and convenience.
 
-Solution: This library provides Python functions that calculate rental scores using price comparisons, commute times, nearby amenities, and safety metrics. These will later be integrated into a complete scoring system and user interface.
+### Solution: 
+Rental Hunters provides a Python-based system that:
+- Validates rental data
+- Scores properties using multiple weighted factors
+- Ranks rentals to answer the charter question:
+  **“Which rental is the best option?”**
+
+# File Structure
+.
+├── src/
+│   ├── function_library.py
+│   ├── validator.py
+│   ├── formatter.py
+│   ├── coordinates.py
+│   ├── commute.py
+│   ├── property.py
+│   ├── property_type.py
+│   ├── rental_property.py
+│   ├── score_calculator.py
+│   ├── listing_manager.py
+│   └── main.py
+│
+├── tests/
+│   └── test_system_flow.py
+│
+├── examples/
+│   ├── demo_project_3.py
+│   ├── demo_script.py
+│   └── demo_script_classes.py
+│
+├── docs/
+│   ├── architecture.txt
+│   ├── class_design.md
+│   ├── testing_strategy.md
+│   └── usage_examples.md
+│
+├── requirements.txt
+└── README.md
+
+# System Architecture
+The system follows a modular, object-oriented architecture using:
+
+    - Inheritance for property types
+    - Composition for system integration
+    - Polymorphism for scoring behavior
+
+See `docs/architecture.txt` for a detailed architecture diagram and explanation.
+
+# Data Persistence & I/O
+Rental Hunters supports full data persistence using CSV files.
+
+Features include:
+    - Saving ranked rental results to CSV
+    - Loading saved state in a new session
+    - Import validation to prevent corrupted or invalid data
+    - Graceful error handling for missing or malformed files
+
+# Testin Strategy
 
 # Installation & Setup
+
+### Requirments:
+    - Python 3.9+
+    - geopy
 
 To run the Rental Hunters Function Library locally:
 
@@ -44,8 +121,6 @@ You can install it manually:
 ``` python
 pip install geopy
 ```
-
-
 Run the demo script to test all functions
 ``` python
 python3 examples/demo_script.py
@@ -112,12 +187,9 @@ for r in ranked:
 manager.save_to_csv("ranked_rentals.csv")
 print("\nResults saved to ranked_rentals.csv")
 ```
-# Function library overview and organization
 
-- `src/function_library.py`: Main file containing all 15 functions (Simple, Medium, and Complex).
-- `examples/demo_script.py`: Script that tests each function and prints results to the terminal.
-- `docs/usage_examples.md`: Markdown file showing formatted usage examples.
-- `requirements.txt`: Lists external dependencies (e.g., geopy).
+
+
 
 
 # Contribution guidelines for team members
