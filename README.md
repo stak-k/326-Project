@@ -91,7 +91,7 @@ Features include:
     - Import validation to prevent corrupted or invalid data
     - Graceful error handling for missing or malformed files
 
-# Testin Strategy
+# Testing Strategy
 This project includes a comprehensive testing suite using Python’s `unittest`
 framework.
 
@@ -107,37 +107,42 @@ See `docs/testing_strategy.md` for full testing documentation.
 
 # Installation & Setup
 
-### Requirments:
-    - Python 3.9+
-    - geopy
+## Requirements
+- Python 3.9 or higher
+- pip (Python package manager)
 
-To run the Rental Hunters Function Library locally:
-
-Clone the repository
-``` python 
+### Step 1: Clone the Repository
+``` python
 git clone https://github.com/<your-username>/326-Project.git
 cd 326-Project
 ```
+
 Open the repository on GitHub and click “Open with GitHub Desktop”
 
 Once cloned, open it in VS Code
-
-(Optional) — If you want to use a virtual environment (recommended for Python projects):
+### Step 2: (Optional) virtual environment (recommended for Python projects)
 ``` python
 python3 -m venv venv
 source venv/bin/activate      # macOS/Linux  
 venv\Scripts\activate         # Windows
 ```
 
-Install required packages
-Currently, this project only requires the geopy library for geolocation features.
+### Step 3:  Install required packages
+All required packages are listed in requirements.txt 
 You can install it manually:
 ``` python
-pip install geopy
+pip install -r requirements.txt
 ```
-Run the demo script to test all functions
-``` python
-python3 examples/demo_script.py
+
+### Step 4: Demos
+#### Demo Scripts
+
+The `examples/` directory contains multiple demo scripts, each serving
+a specific purpose.
+
+### Primary System Demo (Recommended)
+```python
+python examples/demo_project_3.py
 ```
 
 # Usage examples for key functions
@@ -201,10 +206,6 @@ for r in ranked:
 manager.save_to_csv("ranked_rentals.csv")
 print("\nResults saved to ranked_rentals.csv")
 ```
-
-
-
-
 
 # Contribution guidelines for team members
     Serra Tak 
