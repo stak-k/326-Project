@@ -123,7 +123,7 @@ python -m unittest discover tests
 - pip (Python package manager)
 
 ### Step 1: Clone the Repository
-``` python
+``` bash
 git clone https://github.com/<your-username>/326-Project.git
 cd 326-Project
 ```
