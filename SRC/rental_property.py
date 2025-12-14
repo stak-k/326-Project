@@ -185,7 +185,10 @@ class RentalProperty:
 
 
     def to_dict(self):
-        """Return full property info for saving/export."""
+        """
+        Return full property info for saving/export.
+        This is used when writing to CSV.
+        """
         return {
             "Address": self.address,
             "Rent": self.rent,
@@ -194,6 +197,6 @@ class RentalProperty:
             "Lease Term": self.lease_term,
             "Property Type": self.property_type_obj.rental_type(),
             "Type Score": self.property_type_obj.type_score(),
-            "Distances": self.distances
+            "Distances": str(self.distances)  # CSV-safe
         }
     
