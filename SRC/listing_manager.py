@@ -1,4 +1,9 @@
-# class that stores multiple properties and can store into CSV
+# Manages collections of rental listings and handles persistence (CSV I/O).
+# This class is responsible for:
+# - Storing multiple rental properties
+# - Validating incoming data
+# - Exporting/importing listings to/from CSV files
+# - Supporting full system workflows (Phase 5)
 
 from pathlib import Path
 import csv
@@ -90,7 +95,7 @@ class PropertyManager:
         return round(float(score), 2)
 
     # ----------
-    # Add and manage listings
+    # Adding and Managing Listings
     # ----------
 
     def add_property(
@@ -175,7 +180,7 @@ class PropertyManager:
         return self._properties.copy()
 
     # ----------
-    # CSV Operations
+    # CSV Persistence
     # ----------
 
     def save_to_csv(self, filename: str = "properties.csv") -> None:
@@ -248,19 +253,8 @@ class PropertyManager:
 
 
     # ----------
-    # Display and representation
+    # Rental-Specific Integration
     # ----------
-
-    def __str__(self) -> str:
-        """
-        Returns a readable summary of the property manager state.
-
-        Returns:
-            str: Number of stored listings.
-        """
-        count = len(self._properties)
-        return f"PropertyManager({count} listings stored)"
-    
 
     def add_rental(self, rental, score: float) -> dict:
         """
@@ -287,3 +281,16 @@ class PropertyManager:
 
         self._properties.append(listing)
         return listing
+    
+    # ----------
+    # Debugging / Display
+    # ----------
+    def __str__(self) -> str:
+        """
+        Returns a readable summary of the property manager state.
+
+        Returns:
+            str: Number of stored listings.
+        """
+        count = len(self._properties)
+        return f"PropertyManager({count} listings stored)"
