@@ -53,23 +53,60 @@ python3 examples/demo_script.py
 
 # Usage examples for key functions
 
-- The key function get_property_coordinates() will be very helpful for generating geographic coordinates for various aspects of our project. One way we will need this is to the rental property coordinates in order to calculate distances from buildings, bus stops, and other locations.
+Usage Examples
+Creating Rental Properties
+from rental_property import RentalProperty
 
-- calculate_commute_score() Combines multiple transportation options (walk, bike, bus, drive) into a single average commute score (1–10).
-Shorter times = higher scores.
+# 1. Create rental properties
+rental1 = RentalProperty(
+    address="7303 Baltimore Ave, College Park, MD",
+    rent=1200,
+    zipcode=20740,
+    utilities_included=True,
+    property_type_name="2x2",
+    lease_term=12,
+    distances={"drive": 10, "walk": 25}
+)
 
-- calculate_commute_time() Converts a given distance (in miles) into an estimated travel time (in minutes) depending on the chosen transportation mode — walking, biking, driving, or bus
+rental2 = RentalProperty(
+    address="4500 Knox Rd, College Park, MD",
+    rent=1450,
+    zipcode=20740,
+    utilities_included=False,
+    property_type_name="4x4",
+    lease_term=6,
+    distances={"drive": 5, "walk": 15}
+)
 
-- calculate_price_score() Generates a score (1–10) that reflects how affordable a rental is compared to the local average.
-Used to evaluate the “Price” portion of the total rental value score.
+Creating Score Rental
+from score_calculator import ScoreCalculator
 
-- validate_zipcode() is important for checking that the entered ZIP code follows a valid U.S. 5-digit format.
-This prevents location-based calculations from failing due to invalid ZIPs.
+# 2. Score rentals
+calculator = ScoreCalculator()
+score1 = calculator.overall_score(rental1)
+score2 = calculator.overall_score(rental2)
 
-- format_address() Standardizes the address (e.g., “123 main st” → “123 Main St”) to maintain consistent data formatting before it’s sent for geocoding or comparisons.
+print("Scores:")
+print(rental1.address, score1)
+print(rental2.address, score2)
 
-- validate_rental_address() Ensures that the user enters a valid rental address before the property is evaluated.
-It prevents missing or incorrectly formatted data from being submitted to the system.
+Manage listings
+from listing_manager import PropertyManager
+
+# 3. Manage listings
+manager = PropertyManager()
+manager.add_rental(rental1, score1)
+manager.add_rental(rental2, score2)
+
+# 4. View ranked properties
+ranked = manager.list_properties()
+print("\nRanked Rentals:")
+for r in ranked:
+    print(r)
+
+# 5. Save results
+manager.save_to_csv("ranked_rentals.csv")
+print("\nResults saved to ranked_rentals.csv")
 
 # Function library overview and organization
 
