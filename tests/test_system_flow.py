@@ -1,5 +1,5 @@
 """
-Comprehensive test suit for Rental Hunter system
+Comprehensive test suite for Rental Hunter system
 Includes:
 - System test: end to end workflow from rental creation to CSV output
 - Integration Test: class to class interactions
