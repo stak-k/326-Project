@@ -21,8 +21,6 @@ compare and rank housing options objectively.
    - Bryan Sturgis
    - Serra Tak 
    - Nicholas Stroble
-    
-
 
 # Domain Focus and Problem Statement
 
@@ -30,7 +28,8 @@ compare and rank housing options objectively.
 Off-Campus Student Housing Analysis
 
 ### Problem
-UMD students often struggle to find rentals that balance affordability, safety, and convenience.
+UMD students often struggle to find rentals that balance affordability, commute convenience, 
+and lease flexibility.
 
 ### Solution: 
 Rental Hunters provides a Python-based system that:
@@ -105,6 +104,18 @@ All tests pass at submission.
 
 See `docs/testing_strategy.md` for full testing documentation.
 
+# Running Tests
+# Running Tests
+
+This project includes unit, integration, and system tests written using
+Python’s built-in `unittest` framework.
+
+To run the full test suite from the project root directory:
+
+``` python 
+python -m unittest discover tests
+```
+
 # Installation & Setup
 
 ## Requirements
@@ -117,10 +128,7 @@ git clone https://github.com/<your-username>/326-Project.git
 cd 326-Project
 ```
 
-Open the repository on GitHub and click “Open with GitHub Desktop”
-
-Once cloned, open it in VS Code
-### Step 2: (Optional) virtual environment (recommended for Python projects)
+### Step 2: (Optional) Create a Virtual Environment 
 ``` python
 python3 -m venv venv
 source venv/bin/activate      # macOS/Linux  
