@@ -1,10 +1,17 @@
 from property import Property
 
+# ------------------
+# Studio Apartment
+# ------------------
 class Studio(Property):
     """Represents a studio rental unit.
-    Studio rentals typically offer a single-room layout, 
-    and therefore receive a higher property type score.
+    
+    Studio apartments usually consist of a single open space combining bedroom, 
+    living area, and kitchen. Because they
+    are private and not shared, they receive a relatively high
+    property type score.
     """
+
     def rental_type(self) -> str:
         """Return the type of rental."""
         return "Studio"
@@ -17,6 +24,9 @@ class Studio(Property):
         """Return type score for a studio layout."""
         return 9.0
 
+# -------------------
+# One Bed + One Bath 
+# -------------------
 class OneByOne(Property):
     """Represents a One bed, One Bath (Single Apartemnt)
     Typically Offers a One bed room, one bath, with a full kitchen and living room
@@ -35,6 +45,9 @@ class OneByOne(Property):
         return 10.0
     
 
+# -------------------
+# Two Bed + One Bath 
+# -------------------
 class TwoByOne(Property):
     """Represents a Two bed, One Bath (Shared Apartment)
     Typically Offers a Two bed room, one bath, with a full kitchen and living room
@@ -51,7 +64,10 @@ class TwoByOne(Property):
     def type_score(self) -> float:
         """Return type score for a Two Bed + One Bath"""
         return 7.0
-    
+
+# -------------------
+# Two Bed + Two Bath 
+# -------------------   
 class TwoByTwo(Property):
     """Represents a Two bed, Two Bath (Shared Apartment)
     Typically Offers a Two bed room, Two bath, with a full kitchen and living room
@@ -68,7 +84,10 @@ class TwoByTwo(Property):
     def type_score(self) -> float:
         """Return type score for a Two Bed + Two Bath"""
         return 8.0
-    
+
+# -------------------
+# Three Bed + Two Bath 
+# -------------------  
 class ThreeByTwo(Property):
     """3 Bed + 2 Bath (Shared Apartment)
     More roommates, but extra bathroom helps.
@@ -85,7 +104,9 @@ class ThreeByTwo(Property):
     def type_score(self) -> float:
         return 6.0
 
-
+# -------------------
+# Three Bed + Three Bath 
+# -------------------
 class ThreeByThree(Property):
     """3 Bed + 3 Bath (Shared Apartment)
     Every bedroom has its own bathroom. More privacy.
@@ -102,7 +123,9 @@ class ThreeByThree(Property):
     def type_score(self) -> float:
         return 7.0
 
-
+# -------------------
+# Four Bed + Two Bath
+# -------------------
 class FourByTwo(Property):
     """4 Bed + 2 Bath (Shared Apartment)
     High roommate count + shared bathrooms = lower score.
@@ -118,7 +141,9 @@ class FourByTwo(Property):
     def type_score(self) -> float:
         return 4.0
 
-
+# -------------------
+# Four Bed + Three Bath
+# -------------------
 class FourByThree(Property):
     """4 Bed + 3 Bath
     Slightly better than 4x2 due to reduced bathroom sharing.
@@ -135,7 +160,9 @@ class FourByThree(Property):
         """Return the numeric score representing this rental type."""
         return 5.5
 
-
+# -------------------
+# Four Bed + Four Bath
+# -------------------
 class FourByFour(Property):
     """4 Bed + 4 Bath (Popular UMD student layout)
     Every person gets their own bathroom.
@@ -152,8 +179,9 @@ class FourByFour(Property):
     def type_score(self) -> float:
         return 6.0
 
-
-
+# -------------------
+# Shared House
+# -------------------
 class SharedHouse(Property):
     def rental_type(self) -> str:
         """Returns the string label for this rental type ('Shared House')."""
@@ -163,6 +191,9 @@ class SharedHouse(Property):
         """Returns the numerical score representing this rental type (7.0)."""
         return 7.0
 
+# ------------------- 
+# Basement Apartment
+# -------------------
 class Basement(Property):
     def rental_type(self) -> str:
         """Returns the rental type label 'Basement'."""
@@ -172,7 +203,9 @@ class Basement(Property):
         """Returns an 8.5 desirability score for this rental type."""
         return 8.5
     
-
+# -------------------
+# Single Apartment
+# -------------------
 class SingleApartment(Property):
     def rental_type(self) -> str:
         return "Single Apartment"
