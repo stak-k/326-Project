@@ -4,6 +4,7 @@ from pathlib import Path
 import csv
 from property import Property
 from rental_property import RentalProperty
+import json
 
 class PropertyManager:
     """
@@ -228,6 +229,22 @@ class PropertyManager:
     
 
 
+    def load_rentals_from_csv(self, filename: str) -> list:
+        """
+        Loads rental properties from CSV and reconstructs RentalProperty objects.
+        """
+        raw_rows = self.load_from_csv(filename)
+
+        rentals = []
+        for row in raw_rows:
+            rental = RentalProperty.from_dict(row)
+            rentals.append(rental)
+
+        return rentals
+
+    
+
+
 
 
     # ----------
@@ -265,6 +282,7 @@ class PropertyManager:
             "Property Type": rental.property_type_obj.rental_type(),
             "Type Score": rental.property_type_obj.type_score(),
             "Overall Score": score_value,
+            "Distances": json.dumps(rental.distances)
         }
 
         self._properties.append(listing)
