@@ -1,4 +1,4 @@
-# calculate price score, commute score, future crime score, etc
+# calculate price score, commute score, etc
 
 from rental_property import RentalProperty
 
