@@ -228,6 +228,11 @@ class PropertyManager:
                 raise ValueError("CSV file is empty or corrupted.")
 
             for row in reader:
+                if "Overall Score" in row:
+                    try:
+                        float(row["Overall Score"])
+                    except ValueError:
+                        raise ValueError("Invalid Overall Score in CSV file.")
                 self._properties.append(row)
 
         return self._properties
