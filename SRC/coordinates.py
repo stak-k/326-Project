@@ -1,6 +1,16 @@
 
 from function_library import get_property_coordinates
 
+# This class is responsible for converting a rental property address
+# into geographic coordinates (latitude and longitude).
+#
+# It separates geolocation logic from other parts of the system,
+# allowing RentalProperty and Commute to reuse coordinates without
+# duplicating API calls or logic.
+#
+# This class supports automatic updates when an address changes
+# and provides a clean interface for accessing coordinates.
+
 class Coordinates:
     """ Gets coordinates for a given rental property"""
 
@@ -9,6 +19,9 @@ class Coordinates:
         self.address = address
         self.latitude, self.longitude = get_property_coordinates(address)
 
+# -----------------
+# Address handling
+# -----------------
 
     # Address Getter
     @property
