@@ -1,4 +1,8 @@
 # Usage examples for key functions
+This document demonstrates a typical end-to-end workflow
+using the Rental Hunters Function Library, from creating
+rental properties to scoring, ranking, and exporting results.
+
 
 ## Creating Rental Properties
 ``` python
