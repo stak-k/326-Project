@@ -113,7 +113,7 @@ Python’s built-in `unittest` framework.
 To run the full test suite from the project root directory:
 
 ``` bash
-python -m unittest discover tests
+python3 -m unittest discover tests
 ```
 
 # Installation & Setup
