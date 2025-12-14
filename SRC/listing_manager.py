@@ -213,24 +213,17 @@ class PropertyManager:
         if not file_path.exists():
             raise ValueError(f"CSV file not found: {filename}")
 
+        self._properties = [] # Reset manager state
+
         with file_path.open(newline="", encoding="utf-8") as file:
             reader = csv.DictReader(file)
 
             if not reader.fieldnames:
                 raise ValueError("CSV file is empty or corrupted.")
 
-            loaded_properties = []
+            for row in reader:
+                self._properties.append(row)
 
-        # --- minimal validation (NEW) ---
-        for row in self._properties:
-            try:
-                rental = RentalProperty.from_dict(row)
-                loaded_properties.append(rental)
-            except Exception as e:
-                # Skip bad rows but continue laoding others
-                print(f"Skipping invalid row: {e}")
-
-        self._properties = loaded_properties
         return self._properties
     
 
