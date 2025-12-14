@@ -3,6 +3,7 @@ import sys
 from pathlib import Path
 import unittest
 import os
+import json
 
 # Add SRC directory to Python path
 sys.path.append(str(Path(__file__).resolve().parents[1] / "SRC"))
@@ -40,13 +41,17 @@ class TestIOPersistence(unittest.TestCase):
         # Load
         new_manager = PropertyManager()
         new_manager.load_from_csv(TEST_CSV)
-
         loaded = new_manager.list_properties()
 
         # Assertions
         self.assertEqual(len(loaded), 1)
         self.assertEqual(loaded[0]["ZIP"], "20740")
-        self.assertEqual(float(loaded[0]["Overall Score"]), 8.5)
+        self.assertIn("Distances", loaded[0])
+
+
+        # Distances should be JSON string in CSV
+        distances = json.loads(loaded[0]["Distances"])
+        self.assertEqual(distances["UMD"], 10)
 
     def test_load_missing_file_raises_error(self):
         manager = PropertyManager()
