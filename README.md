@@ -223,6 +223,8 @@ print("\nResults saved to ranked_rentals.csv")
 # Video presentation
 A 5–10 minute project presentation video can be found here:
 
+https://docs.google.com/presentation/d/1pQm5JfnPf64FwmO8nSgYguQeafUhHWHApIA3i8FyosE/edit?usp=sharing 
+
 [ INSERT VIDEO LINK ]
 
 # Contribution guidelines for team members
