@@ -242,5 +242,10 @@ A 5–10 minute project presentation video can be found here:
         - Implemented medium, complex, and advanced functions, including geolocation and scoring logic.
         - Collaborated on designing and setting up a database structure for existing rental properties.
         - Validated outputs, reviewed final test results, and assisted with integration testing and README updates.
+        - Implemented Geopy and used it for many features in relation to coordinates and commute times
+        - Implemented polymorphism and inheritence
+        - Collaborated with Serra for creating property types
+        - Designed and coded the live demo and fixed any bugs throughout the program.
+        
 
     
