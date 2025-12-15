@@ -1,3 +1,2 @@
 Address,Rent,ZIP,Utilities Included,Lease Term,Property Type,Type Score,Overall Score,Distances
-5000 Pierce Ave,1500.0,20740,True,6,Shared House,7.0,7.3,"{""walk"": 1.0, ""drive"": 1.0}"
-5000 Pierce Ave,2000.0,20740,True,6,Shared House,7.0,5.64,"{""walk"": 1.0, ""drive"": 1.0}"
+7315 Isabella Rd Laurel,1000.0,20723,True,12,One Bed + One Bath,10.0,6.11,"{""walk"": 23.0, ""drive"": 23.0}"
