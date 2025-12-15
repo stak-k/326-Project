@@ -11,6 +11,7 @@ class Studio(Property):
     are private and not shared, they receive a relatively high
     property type score.
     """
+    type_key = "Studio"
 
     def rental_type(self) -> str:
         """Return the type of rental."""
@@ -32,6 +33,8 @@ class OneByOne(Property):
     Typically Offers a One bed room, one bath, with a full kitchen and living room
     and is not shared. Therefore receive the Best property type score.
     """
+    type_key = "1x1"
+
     def rental_type(self) -> str:
         """Return the type of rental as a descriptive string."""
         return "One Bed + One Bath"
@@ -53,6 +56,8 @@ class TwoByOne(Property):
     Typically Offers a Two bed room, one bath, with a full kitchen and living room
     and is shared. Decrease few points for shared bathroom.
     """
+    type_key = "2x1"
+
     def rental_type(self) -> str:
         """Return the type of rental as a descriptive string."""
         return "Two Bed + One Bath"
@@ -73,6 +78,8 @@ class TwoByTwo(Property):
     Typically Offers a Two bed room, Two bath, with a full kitchen and living room
     and is shared. Increase 1 point compared to Two by One for additional bathroom.
     """
+    type_key = "2x2"
+
     def rental_type(self) -> str:
         """Return the type of rental as a descriptive string."""
         return "Two Bed + Two Bath"
@@ -93,6 +100,7 @@ class ThreeByTwo(Property):
     More roommates, but extra bathroom helps.
     Slightly lower overall desirability for students.
     """
+    type_key = "3x2"
     def rental_type(self) -> str:
         """Return the type of rental as a descriptive string."""
         return "Three Bed + Two Bath"
@@ -112,6 +120,8 @@ class ThreeByThree(Property):
     Every bedroom has its own bathroom. More privacy.
     Higher score than 3x2.
     """
+    type_key = "3x3"
+
     def rental_type(self) -> str:
         """Return the specific rental type label for this unit."""
         return "Three Bed + Three Bath"
@@ -130,6 +140,7 @@ class FourByTwo(Property):
     """4 Bed + 2 Bath (Shared Apartment)
     High roommate count + shared bathrooms = lower score.
     """
+    type_key = "4x2"
     def rental_type(self) -> str:
         """Return the rentals type label."""
         return "Four Bed + Two Bath"
@@ -148,6 +159,7 @@ class FourByThree(Property):
     """4 Bed + 3 Bath
     Slightly better than 4x2 due to reduced bathroom sharing.
     """
+    type_key = "4x3"
     def rental_type(self) -> str:
         """Return the rentals type description."""
         return "Four Bed + Three Bath"
@@ -168,6 +180,7 @@ class FourByFour(Property):
     Every person gets their own bathroom.
     Better privacy but still lots of roommates.
     """
+    type_key = "4x4"
     def rental_type(self) -> str:
         """Return the descriptive label for this rental type."""
         return "Four Bed + Four Bath"
@@ -183,6 +196,7 @@ class FourByFour(Property):
 # Shared House
 # -------------------
 class SharedHouse(Property):
+    type_key = "Shared House"
     def rental_type(self) -> str:
         """Returns the string label for this rental type ('Shared House')."""
         return "Shared House"
@@ -195,6 +209,7 @@ class SharedHouse(Property):
 # Basement Apartment
 # -------------------
 class Basement(Property):
+    type_key = "Basement"
     def rental_type(self) -> str:
         """Returns the rental type label 'Basement'."""
         return "Basement"
@@ -207,6 +222,7 @@ class Basement(Property):
 # Single Apartment
 # -------------------
 class SingleApartment(Property):
+    type_key = "Single Apartment"
     def rental_type(self) -> str:
         return "Single Apartment"
     
