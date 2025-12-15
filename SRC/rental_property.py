@@ -1,4 +1,4 @@
-# class that stores the rental property data entered by the user
+# Class that stores the rental property data entered by the user
 
 # Import Validator and Coordinates
 from validator import Validator
