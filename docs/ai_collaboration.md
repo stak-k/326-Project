@@ -14,6 +14,10 @@ understand every aspect of the classes implemented.
 
 I got stuck on rental_property.py because I need validator to be complete so I will start building that out now
 
+
+12/14:
+Had some issues with the live demo so I used AI in order to fix any bugs and help implement commute time and distance for the entered property
+
 ### Serra  
 Throughout the Rental Hunters project, I used AI tools such as ChatGPT as a learning assistant and problem-solving support, 
 not as a replacement for my own work. AI helped me understand concepts, troubleshoot problems, and improve how I structured 
