@@ -1,3 +1,2 @@
 Address,Rent,ZIP,Utilities Included,Lease Term,Property Type,Type Score,Overall Score,Distances
-5000 Pierce Ave,1500.0,20740,True,6,Shared House,7.0,7.3,"{""walk"": 1.0, ""drive"": 1.0}"
-5000 Pierce Ave,2000.0,20740,True,6,Shared House,7.0,5.64,"{""walk"": 1.0, ""drive"": 1.0}"
+5000 Pierce Ave,1000.0,20740,True,12,1x1,10.0,7.46,"{""walk"": 3.0, ""drive"": 3.0}"
