@@ -52,11 +52,13 @@ Rental Hunters provides a Python-based system that:
 │   ├── rental_property.py
 │   ├── score_calculator.py
 │   ├── listing_manager.py
-│   └── main.py
-│
+│   ├── main.py
+│   └── live_demo.py
+|
 ├── tests/
-│   └── test_system_flow.py
-│
+│   |── test_system_flow.py
+│   |── test_io_persistence.py
+|   
 ├── examples/
 │   ├── demo_project_3.py
 │   ├── demo_script.py
@@ -66,10 +68,17 @@ Rental Hunters provides a Python-based system that:
 │   ├── architecture.txt
 │   ├── class_design.md
 │   ├── testing_strategy.md
-│   └── usage_examples.md
-│
+│   ├── usage_examples.md
+|   ├── demonstration.md
+│   ├── ai_collaboration.md
+|   ├── ai_planning_step1.png
+|   └── ai_planning_step2.png
+|
 ├── requirements.txt
-└── README.md
+├── README.md
+├── ranked_rentals.csv
+├── saved_rentals.csv
+└──
 ``` 
 
 # System Architecture
