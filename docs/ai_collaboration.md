@@ -8,6 +8,9 @@ input of the property. I will then start working on the scoring class, commute c
 After I get the core work done Serra and Nick will go through it and add functions that fit and make sure they 
 understand every aspect of the classes implemented.
 
+![AI-guided planning for RentalProperty](images/ai_planning_step1.png)
+
+![AI-guided class build order and system structure](images/ai_planning_steps2.png)
 
 I got stuck on rental_property.py because I need validator to be complete so I will start building that out now
 
