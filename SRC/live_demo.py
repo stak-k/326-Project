@@ -26,6 +26,10 @@ This demonstrates:
 from rental_property import RentalProperty
 from score_calculator import ScoreCalculator
 from listing_manager import PropertyManager
+from commute import Commute
+
+CAMPUS_ADDRESS = "7649 Library Ln, College Park, MD 20742"
+
 
 
 def display_score_breakdown(rental, calculator):
@@ -46,6 +50,25 @@ def display_score_breakdown(rental, calculator):
     print("--------------------------------")
     print(f"⭐ OVERALL SCORE:      {overall}/10\n")
 
+    # --------------------------------
+    # COMMUTE DETAILS (RECOMPUTED)
+    # --------------------------------
+    print("🚗 COMMUTE DETAILS")
+
+    for mode in rental.distances.keys():
+        commute = Commute(
+            rental.address,
+            CAMPUS_ADDRESS,
+            mode=mode
+        )
+
+        print(
+            f"{mode.title():<6}: "
+            f"{commute.distance_miles} miles → "
+            f"{commute.time_minutes} minutes"
+        )
+
+
 
 def get_rental_score(manager, calculator):
     """Collect user input, calculate score, and optionally save rental."""
@@ -62,13 +85,18 @@ def get_rental_score(manager, calculator):
     print("Studio, 1x1, 2x2, 3x3, 4x4, Basement, Shared House")
     property_type = input("Select property type: ").strip()
 
-    print("\n📍 Commute Distance")
-    distance = float(input("Distance to campus (miles): "))
+    print("\n📍 Calculating commute to campus...")
 
+    walk_commute = Commute(address, CAMPUS_ADDRESS, mode="walk")
+    drive_commute = Commute(address, CAMPUS_ADDRESS, mode="drive")
+
+    # Distances are the SAME miles, but times differ
     distances = {
-        "walk": distance,
-        "drive": distance
+        "walk": walk_commute.distance_miles,
+        "drive": drive_commute.distance_miles
     }
+
+
 
     rental = RentalProperty(
         address=address,

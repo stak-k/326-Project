@@ -495,6 +495,7 @@ def calculate_distance(start_address: str, end_address: str) -> float:
 
      # Calculate distance in miles
      miles = round(geodesic(start_coords, end_coords).miles, 2)
+     return miles
 
 
 # Calculate a flexibility score based on the lease term of rental property.
