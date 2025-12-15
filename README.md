@@ -235,6 +235,8 @@ https://docs.google.com/presentation/d/1pQm5JfnPf64FwmO8nSgYguQeafUhHWHApIA3i8Fy
 
 [ [Video](https://drive.google.com/file/d/1uN_9Ugps_br-ctmEyUJrVJg9FwAyLL3g/view?usp=sharing) ]
 
+* Please Open With Terpmail *
+
 # Contribution guidelines for team members
     Serra Tak 
         - Created and tested validation and formatting functions
