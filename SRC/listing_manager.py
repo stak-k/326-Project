@@ -278,7 +278,7 @@ class PropertyManager:
             "ZIP": rental.zipcode,
             "Utilities Included": rental.utilities_included,
             "Lease Term": rental.lease_term,
-            "Property Type": rental.property_type_obj.rental_type(),
+            "Property Type": rental.property_type_obj.type_key,
             "Type Score": rental.property_type_obj.type_score(),
             "Overall Score": score_value,
             "Distances": json.dumps(rental.distances)

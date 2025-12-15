@@ -196,7 +196,7 @@ class RentalProperty:
             "ZIP": self.zipcode,
             "Utilities Included": self.utilities_included,
             "Lease Term": self.lease_term,
-            "Property Type": self.property_type_obj.rental_type(),
+            "Property Type": self.property_type_obj.type_key,  # Use type_key for reconstruction
             "Type Score": self.property_type_obj.type_score(),
             "Distances": json.dumps(self.distances)
         }
