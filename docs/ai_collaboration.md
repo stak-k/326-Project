@@ -1,16 +1,29 @@
 #AI Collaboration
 ### Bryan 11/2: 
-We had to make sure we got all of the core classes we needed and what would be the most logical to start first. I gave Chat GPT what the classes we wanted to do and the main input form for the rental property users will enter. Serra started working on formatter.py and I will begin checking the work she did on that file and add anything I see that will fit. Then I will start working on the rental_property.py which will be the foundation for handling the input of the property. I will then start working on the scoring class, commute class, and listing manager class. After I get the core work done Serra and Nick will go through it and add functions that fit and make sure they understand every aspect of the classes implemented.
+We had to make sure we got all of the core classes we needed and what would be the most logical to start first. 
+I gave Chat GPT what the classes we wanted to do and the main input form for the rental property users will enter. 
+Serra started working on formatter.py and I will begin checking the work she did on that file and add anything 
+I see that will fit. Then I will start working on the rental_property.py which will be the foundation for handling the 
+input of the property. I will then start working on the scoring class, commute class, and listing manager class. 
+After I get the core work done Serra and Nick will go through it and add functions that fit and make sure they 
+understand every aspect of the classes implemented.
 
 
 I got stuck on rental_property.py because I need validator to be complete so I will start building that out now
 
 ### Serra  
-Throughout the Rental Hunters project, I used AI tools such as ChatGPT as a learning assistant and problem-solving support, not as a replacement for my own work. AI helped me understand concepts, troubleshoot problems, and improve how I structured and tested my code across Projects 1, 2, 3, and 4.
+Throughout the Rental Hunters project, I used AI tools such as ChatGPT as a learning assistant and problem-solving support, 
+not as a replacement for my own work. AI helped me understand concepts, troubleshoot problems, and improve how I structured 
+and tested my code across Projects 1, 2, 3, and 4.
 
-In the earlier projects, I mainly used AI to clarify validation and formatting logic, especially when handling user inputs like addresses, rent values, ZIP codes, and error conditions. AI explanations helped me understand why certain checks were necessary and how to handle edge cases more cleanly, but I implemented and tested all logic myself.
+In the earlier projects, I mainly used AI to clarify validation and formatting logic, especially when handling user inputs like
+addresses, rent values, ZIP codes, and error conditions. AI explanations helped me understand why certain checks were necessary 
+and how to handle edge cases more cleanly, but I implemented and tested all logic myself.
 
-One specific area where AI was helpful was during demo and testing script development. While testing many functions, I realized that writing separate try/except blocks for each case was inefficient and limited how many scenarios I could test. With AI guidance, I created a small helper function to standardize testing:
+One specific area where AI was helpful was during demo and testing script development. While testing many functions, I realized 
+that writing separate try/except blocks for each case was inefficient and limited how many scenarios I could test. With AI guidance, 
+I created a small helper function to standardize testing:
+
 ``` bash
 def run_test(func_name, *args):
     try:
@@ -20,7 +33,8 @@ def run_test(func_name, *args):
         print(f"❌ {func_name.__name__}{args} → {type(e).__name__}: {e}")
 ```
 
-This approach allowed me to test multiple valid and invalid inputs consistently and helped me better understand structured testing practices.
+This approach allowed me to test multiple valid and invalid inputs consistently and helped me better understand structured 
+testing practices.
 
 In Project 3, when we transitioned to object-oriented programming, I used AI to help me reason through class responsibilities and method behavior. I worked on validation logic inside classes, property updates, and formatting outputs. AI helped me think through how setters, error handling, and object state should behave, but I always tested changes locally to make sure I fully understood them. 
 
